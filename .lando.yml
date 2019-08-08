@@ -1,0 +1,4 @@
+name: micda
+recipe: wordpress
+config:
+  webroot: web

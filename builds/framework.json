@@ -1,0 +1,16 @@
+{
+  "themes": [],
+  "custom-themes": [
+    "https://github.com/umdigital/michigan-framework/archive/master.zip"
+  ],
+  "plugins": [
+    "ajax-thumbnail-rebuild",
+    "bu-navigation",
+    "enable-media-replace",
+    "pods"
+  ],
+  "custom-plugins": [
+    "https://github.com/umdigital/mc-google-analytics/archive/master.zip",
+    "https://github.com/umdigital/umich-mauth/archive/master.zip"
+  ]
+}
