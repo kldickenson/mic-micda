@@ -1,0 +1,41 @@
+.content p,
+.content ol,
+.content ul,
+.content h2,
+.content h3,
+.content h4 {
+    margin-bottom: 1rem;
+    max-width: 42rem;
+}
+
+.content details {
+    margin-bottom: 1rem;
+    max-width: 48rem;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+.content ul,
+.content ol {
+    margin-left: 1rem;
+}
+
+.content ul li {
+    position: relative;
+}
+
+.content ul li::before {
+    background-color: #00274c;
+    content: "";
+    height: 0.5rem;
+    left: -1rem;
+    position: absolute;
+    top: 0.25rem;
+    width: 0.5rem;
+}
+
+.content ol {
+    list-style-type: decimal;
+}

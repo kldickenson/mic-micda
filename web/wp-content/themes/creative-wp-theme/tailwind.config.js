@@ -1,18 +1,23 @@
 module.exports = {
     theme: {
         colors: {
-            "michigan-blue": "#001e3e",
+            "black": "#000000",
+            "cobalt": "#024794",
+            "michigan-blue": "#00274c",
             "michigan-maize": "#ffcb05",
             "transparent": "transparent",
             "white": {
-              "default": "#ffffff",
-              "25": "rgba(255, 255, 255, 0.25)"
+                "default": "#ffffff",
+                "25": "rgba(255, 255, 255, 0.25)"
             }
         },
         extend: {
-          inset: {
-            "2": "0.5rem"
-          }
+            inset: {
+                "2": "0.5rem"
+            },
+            maxHeight: {
+                "20": "20rem"
+            }
         }
     },
     variants: {},

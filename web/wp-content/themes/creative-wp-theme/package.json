@@ -7,7 +7,7 @@
     "build": "npm-run-all build:*",
     "build:css": "postcss css/main.css -o dist/style.css --env production",
     "build:js": "babel js/app.js --out-file dist/app.js",
-    "watch:css": "postcss css/main.css -o dist/style.css -w --verbose",
+    "watch:css": "postcss css/main.css -o dist/style.css -w --poll --verbose",
     "watch:js": "babel js/app.js --out-file dist/app.js --watch",
     "watch:browser-sync": "browser-sync start --proxy 'http://micda.lndo.site' --no-inject-changes --no-open --files 'dist' '*.php'"
   },
