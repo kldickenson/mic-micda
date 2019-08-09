@@ -9,7 +9,7 @@
     "build:js": "babel js/app.js --out-file dist/app.js",
     "watch:css": "postcss css/main.css -o dist/style.css -w --verbose",
     "watch:js": "babel js/app.js --out-file dist/app.js --watch",
-    "watch:browser-sync": "browser-sync start --https --proxy 'https://micda.lndo.site' --no-inject-changes --no-open --files 'dist' '*.php'"
+    "watch:browser-sync": "browser-sync start --proxy 'http://micda.lndo.site' --no-inject-changes --no-open --files 'dist' '*.php'"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

@@ -2,6 +2,9 @@
 
 // Theme features.
 function creative_theme_features() {
+	// Add theme features.
+	add_theme_support( 'post-thumbnails' );
+
 	// Remove some theme features.
 	remove_theme_support( 'colors' );
 
