@@ -4,6 +4,6 @@
 
 @import "./_base.css";
 
-@import "./_custom.css";
-
 @import "tailwindcss/utilities";
+
+@import "./_custom.css";
