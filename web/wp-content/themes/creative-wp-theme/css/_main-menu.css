@@ -1,0 +1,38 @@
+.header-menu .menu-item {
+    margin-right: 2rem;
+}
+
+.header-menu .menu-item:last-child {
+    margin-right: 0;
+}
+
+.header-menu .menu-item a {
+    position: relative;
+}
+
+.header-menu .menu-item a::after {
+    background-color: #ffcb05;
+    bottom: -0.5rem;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    transition: width 0.15s ease;
+    width: 0;
+}
+
+.header-menu .menu-item a:hover::after,
+.header-menu .menu-item a:focus::after {
+    transition: width 0.15s ease;
+    width: 100%;
+}
+
+.header-menu .current-menu-item a::after {
+    background-color: #ffcb05;
+    bottom: -0.5rem;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}

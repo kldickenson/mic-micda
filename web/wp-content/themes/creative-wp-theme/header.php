@@ -22,16 +22,24 @@
     Skip to main content
 </a>
 
-<header>
-    <a href="/">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="site logo">
-    </a>
+<header class="bg-michigan-blue py-8">
+    <div class="contained flex items-center">
+        <a href="/">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="site logo">
+        </a>
 
-    <nav>
-		<?php wp_nav_menu( array(
-			'theme_location' => 'header_menu',
-		) ); ?>
-    </nav>
+        <div class="ml-auto flex flex-col items-end">
+            <div class="mb-4">
+	            <?php get_search_form(); ?>
+            </div>
 
-	<?php get_search_form(); ?>
+            <nav class="header-menu">
+				<?php wp_nav_menu( array(
+					'theme_location' => 'header_menu',
+					'menu_class'     => 'menu flex text-white font-bold',
+                    'depth' => 1,
+				) ); ?>
+            </nav>
+        </div>
+    </div>
 </header>

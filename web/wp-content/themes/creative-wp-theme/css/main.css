@@ -2,8 +2,12 @@
 
 @import "tailwindcss/components";
 
+@import "_fonts.css";
+
 @import "./_base.css";
 
 @import "tailwindcss/utilities";
 
-@import "./_custom.css";
+@import "./_utilities.css";
+
+@import "./_main-menu.css";
