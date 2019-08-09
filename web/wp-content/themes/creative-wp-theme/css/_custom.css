@@ -1,5 +1,16 @@
 /* purgecss start ignore */
 
-/* Custom styles (will be ignored by purse css */
+.clip {
+    position: fixed !important;
+    _position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.focusable:focus {
+    clip: auto;
+    position: relative !important;
+}
+
 
 /* purgecss end ignore */
