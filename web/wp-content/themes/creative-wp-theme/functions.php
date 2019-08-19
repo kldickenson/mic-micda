@@ -2,6 +2,9 @@
 
 // Theme features.
 function creative_theme_features() {
+	// Add theme features.
+	add_theme_support( 'post-thumbnails' );
+
 	// Remove some theme features.
 	remove_theme_support( 'colors' );
 
@@ -25,6 +28,7 @@ function creative_widgets_init() {
 function creative_theme_assets() {
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/dist/style.css' );
 	wp_enqueue_script( 'script', get_template_directory_uri() . '/dist/app.js' );
+	wp_enqueue_script( 'details-polyfill', get_template_directory_uri() . '/vendor/details-element-polyfill.js' );
 }
 
 // Add actions.
