@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 .content {
     margin-bottom: 12rem;
 }
@@ -57,3 +58,4 @@
 .content ol {
     list-style-type: decimal;
 }
+/* purgecss end ignore */

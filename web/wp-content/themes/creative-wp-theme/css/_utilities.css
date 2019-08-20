@@ -1,5 +1,4 @@
 /* purgecss start ignore */
-
 .clip {
     position: fixed !important;
     _position: absolute !important;
@@ -28,5 +27,4 @@
     padding: 1rem 2rem;
     text-transform: uppercase;
 }
-
 /* purgecss end ignore */

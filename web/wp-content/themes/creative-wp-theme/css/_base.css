@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 body {
     font-family: "Montserrat", sans-serif;
     margin-left: auto;
@@ -118,6 +119,9 @@ blockquote cite {
     text-transform: uppercase;
 }
 
+table {
+    border-collapse: collapse;
+}
 
 table > tbody > tr:first-child {
     background-color: #e5e5e5;
@@ -152,3 +156,11 @@ table > tbody tr > td:last-child {
 address {
     font-style: normal;
 }
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* purgecss end ignore */
