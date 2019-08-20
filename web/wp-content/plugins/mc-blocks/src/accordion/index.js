@@ -4,8 +4,8 @@ const {RichText} = wp.editor;
 
 registerBlockType("mc-blocks/accordion", {
     title: __("Accordion", "mc-blocks"),
-    icon: "shield",
-    category: "common",
+    icon: "editor-insertmore",
+    category: "widgets",
 
     attributes: {
         accordionHeading: {

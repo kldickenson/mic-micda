@@ -35,6 +35,7 @@ function mc_blocks_register_blocks() {
 	// Array of block created in this plugin.
 	$blocks = [
 		'mc-blocks/accordion',
+		'mc-blocks/section-inner',
 	];
 
 	// Loop through $blocks and register each block with the same script and styles.

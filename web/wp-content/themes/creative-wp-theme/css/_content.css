@@ -13,10 +13,13 @@
     max-width: 42rem;
 }
 
-.content blockquote,
-.content details {
+.content > [class^="wp-block"] {
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
+}
+
+.content blockquote,
+.content details {
     max-width: 48rem;
 }
 
@@ -26,8 +29,6 @@
 }
 
 .content table {
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
     max-width: 55rem;
     width: 100%;
 }

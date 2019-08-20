@@ -88,8 +88,8 @@ var registerBlockType = wp.blocks.registerBlockType;
 var RichText = wp.editor.RichText;
 registerBlockType("mc-blocks/accordion", {
   title: __("Accordion", "mc-blocks"),
-  icon: "shield",
-  category: "common",
+  icon: "editor-insertmore",
+  category: "widgets",
   attributes: {
     accordionHeading: {
       type: "string",
@@ -168,10 +168,103 @@ registerBlockType("mc-blocks/accordion", {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./accordion */ "./src/accordion/index.js");
+/* harmony import */ var _section_inner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./section-inner */ "./src/section-inner/index.js");
 /**
  * Import blocks as components.
  */
 
+
+
+/***/ }),
+
+/***/ "./src/section-inner/index.js":
+/*!************************************!*\
+  !*** ./src/section-inner/index.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InnerBlocks = _wp$editor.InnerBlocks;
+registerBlockType("mc-blocks/section-inner", {
+  title: __("Section with Inner Blocks", "mc-blocks"),
+  icon: "feedback",
+  category: "widgets",
+  attributes: {
+    sectionHeading: {
+      type: "string",
+      source: "html",
+      selector: ".section-heading"
+    },
+    sectionContent: {
+      type: "array",
+      source: "children",
+      selector: ".section-content"
+    }
+  },
+  edit: function edit(props) {
+    var _props$attributes = props.attributes,
+        sectionHeading = _props$attributes.sectionHeading,
+        sectionContent = _props$attributes.sectionContent,
+        setAttributes = props.setAttributes;
+
+    var onChangeSectionHeading = function onChangeSectionHeading(newSectionHeading) {
+      setAttributes({
+        sectionHeading: newSectionHeading
+      });
+    };
+
+    var onChangeSectionContent = function onChangeSectionContent(newSectionContent) {
+      setAttributes({
+        sectionContent: newSectionContent
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      className: "section-heading"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: __("Section heading", "mc-blocks"),
+      value: sectionHeading,
+      onChange: onChangeSectionHeading
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      multiline: "p",
+      placeholder: __("Section content", "mc-blocks"),
+      onChange: onChangeSectionContent,
+      value: sectionContent
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
+      allowedBlocks: ["core/table"]
+    }));
+  },
+  save: function save(props) {
+    var _props$attributes2 = props.attributes,
+        sectionHeading = _props$attributes2.sectionHeading,
+        sectionContent = _props$attributes2.sectionContent;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "py-8"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      className: "section-heading"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: sectionHeading
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "flex"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-content mr-12 max-w-15"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      multiline: "p",
+      value: sectionContent
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null)));
+  }
+});
 
 /***/ }),
 
