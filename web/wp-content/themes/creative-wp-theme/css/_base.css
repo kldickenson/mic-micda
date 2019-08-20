@@ -34,7 +34,7 @@ details {
     background-color: #f6f6f6;
 }
 
-details > p {
+details .accordion-content {
     padding: 1rem 2rem;
 }
 
