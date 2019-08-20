@@ -1,6 +1,7 @@
 const cssnano = require("cssnano");
 const purgecss = require("@fullhuman/postcss-purgecss")({
   content: ["./**/*.php"],
+  css: ["max-w-15"],
   // Custom extractor for some Tailwind classes.
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
 });
