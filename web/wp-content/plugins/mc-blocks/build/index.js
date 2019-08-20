@@ -158,6 +158,97 @@ registerBlockType("mc-blocks/accordion", {
 
 /***/ }),
 
+/***/ "./src/card/index.js":
+/*!***************************!*\
+  !*** ./src/card/index.js ***!
+  \***************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var RichText = wp.editor.RichText;
+registerBlockType("mc-blocks/card", {
+  title: __("Card", "mc-blocks"),
+  icon: "id",
+  category: "widgets",
+  attributes: {
+    cardHeading: {
+      type: "string",
+      source: "text",
+      selector: ".card-heading"
+    },
+    cardTopContent: {
+      type: "string",
+      source: "html",
+      selector: ".card-top-content"
+    },
+    cardBottomContent: {
+      type: "string",
+      source: "html",
+      selector: ".card-bottom-content"
+    }
+  },
+  edit: function edit(props) {
+    var _props$attributes = props.attributes,
+        cardHeading = _props$attributes.cardHeading,
+        cardTopContent = _props$attributes.cardTopContent,
+        cardBottomContent = _props$attributes.cardBottomContent,
+        setAttributes = props.setAttributes;
+
+    var onChangeCardHeading = function onChangeCardHeading(newCardHeading) {
+      setAttributes({
+        cardHeading: newCardHeading
+      });
+    };
+
+    var onChangeCardTopContent = function onChangeCardTopContent(newCardTopContent) {
+      setAttributes({
+        cardTopContent: newCardTopContent
+      });
+    };
+
+    var onChangeCardBottomContent = function onChangeCardBottomContent(newCardBottomContent) {
+      setAttributes({
+        cardBottomContent: newCardBottomContent
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      className: "card-heading"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: __("Card heading", "mc-blocks"),
+      value: cardHeading,
+      onChange: onChangeCardHeading
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "card-top-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: __("Card top content", "mc-blocks"),
+      onChange: onChangeCardTopContent,
+      value: cardTopContent
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "card-bottom-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: __("Card bottom content", "mc-blocks"),
+      onChange: onChangeCardBottomContent,
+      value: cardBottomContent
+    })));
+  },
+  save: function save(props) {
+    var _props$attributes2 = props.attributes,
+        accordionHeading = _props$attributes2.accordionHeading,
+        accordionContent = _props$attributes2.accordionContent;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, "hello");
+  }
+});
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -169,9 +260,11 @@ registerBlockType("mc-blocks/accordion", {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./accordion */ "./src/accordion/index.js");
 /* harmony import */ var _section_inner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./section-inner */ "./src/section-inner/index.js");
+/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./card */ "./src/card/index.js");
 /**
  * Import blocks as components.
  */
+
 
 
 
@@ -274,7 +367,7 @@ registerBlockType("mc-blocks/section-inner", {
       onChange: onChangeSectionContent,
       value: sectionContent
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
-      allowedBlocks: ["core/table"]
+      allowedBlocks: ["core/table", "mc-blocks/card"]
     }))];
   },
   save: function save(props) {

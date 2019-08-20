@@ -36,6 +36,7 @@ function mc_blocks_register_blocks() {
 	$blocks = [
 		'mc-blocks/accordion',
 		'mc-blocks/section-inner',
+		'mc-blocks/card',
 	];
 
 	// Loop through $blocks and register each block with the same script and styles.

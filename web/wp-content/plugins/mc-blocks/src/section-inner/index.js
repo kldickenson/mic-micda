@@ -75,7 +75,7 @@ registerBlockType("mc-blocks/section-inner", {
                     />
                 </div>
                 <InnerBlocks
-                    allowedBlocks={["core/table"]}
+                    allowedBlocks={["core/table", "mc-blocks/card"]}
                 />
             </div>
         ];
