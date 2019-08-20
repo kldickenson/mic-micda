@@ -15,11 +15,11 @@ while ( have_posts() ) {
         </div>
 	<?php endif; ?>
 
-    <div class="contained mt-2 mb-8">
-		<?php if ( function_exists( 'yoast_breadcrumb' ) ): ?>
-			<?php yoast_breadcrumb( '<p class="text-md font-medium" id="breadcrumbs">', '</p>' ); ?>
-		<?php endif; ?>
-    </div>
+    <?php if ( function_exists( 'yoast_breadcrumb' ) ): ?>
+        <div class="breadcrumbs contained mt-2 mb-8">
+            <?php yoast_breadcrumb( '<p class="text-md font-medium" id="breadcrumbs">', '</p>' ); ?>
+        </div>
+    <?php endif; ?>
 
     <main role="main" id="main" class="contained">
 		<?php get_sidebar(); ?>

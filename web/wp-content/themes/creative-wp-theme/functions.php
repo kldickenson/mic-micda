@@ -31,7 +31,25 @@ function creative_theme_assets() {
 	wp_enqueue_script( 'details-polyfill', get_template_directory_uri() . '/vendor/details-element-polyfill.js' );
 }
 
+function creative_customize_register( $wp_customize ) {
+	// Add sections.
+	$wp_customize->add_section( 'creative_hero_section', array(
+		'title'           => __( 'Hero Section' ),
+		'active_callback' => 'is_front_page',
+		'priority'        => - 10,
+	) );
+
+	// Hero image.
+	$wp_customize->add_setting( 'creative_hero_image' );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'creative_hero_image', array(
+		'label'    => __( 'Hero Image' ),
+		'section'  => 'creative_hero_section',
+		'settings' => 'creative_hero_image',
+	) ) );
+}
+
 // Add actions.
 add_action( 'after_setup_theme', 'creative_theme_features' );
-add_action ( 'widgets_init', 'creative_widgets_init' );
+add_action( 'widgets_init', 'creative_widgets_init' );
 add_action( 'wp_enqueue_scripts', 'creative_theme_assets' );
+add_action( 'customize_register', 'creative_customize_register' );
