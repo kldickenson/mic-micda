@@ -39,6 +39,51 @@ function creative_customize_register( $wp_customize ) {
 		'priority'        => - 10,
 	) );
 
+	$wp_customize->add_section( 'creative_contact_section', array(
+		'title'    => __( 'Contact Info Section' ),
+		'priority' => 0,
+	) );
+
+	// Address
+	$wp_customize->add_setting( 'creative_contact_address' );
+	$wp_customize->add_control( 'creative_contact_address', array(
+		'label'   => __( 'Address' ),
+		'section' => 'creative_contact_section',
+		'type'    => 'textarea',
+	) );
+
+	// Email
+	$wp_customize->add_setting( 'creative_contact_email' );
+	$wp_customize->add_control( 'creative_contact_email', array(
+		'label'   => __( 'Email' ),
+		'section' => 'creative_contact_section',
+		'type'    => 'text',
+	) );
+
+	// Phone
+	$wp_customize->add_setting( 'creative_contact_phone' );
+	$wp_customize->add_control( 'creative_contact_phone', array(
+		'label'   => __( 'Phone' ),
+		'section' => 'creative_contact_section',
+		'type'    => 'text',
+	) );
+
+	// Twitter
+	$wp_customize->add_setting( 'creative_contact_twitter' );
+	$wp_customize->add_control( 'creative_contact_twitter', array(
+		'label'   => __( 'Twitter' ),
+		'section' => 'creative_contact_section',
+		'type'    => 'text',
+	) );
+
+	// Facebook
+	$wp_customize->add_setting( 'creative_contact_facebook' );
+	$wp_customize->add_control( 'creative_contact_facebook', array(
+		'label'   => __( 'Facebook' ),
+		'section' => 'creative_contact_section',
+		'type'    => 'text',
+	) );
+
 	// Hero image.
 	$wp_customize->add_setting( 'creative_hero_image' );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'creative_hero_image', array(

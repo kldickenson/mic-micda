@@ -148,3 +148,7 @@ table > tbody > tr:last-child td {
 table > tbody tr > td:last-child {
     border-right: 0;
 }
+
+address {
+    font-style: normal;
+}
