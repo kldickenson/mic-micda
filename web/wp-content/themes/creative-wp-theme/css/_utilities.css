@@ -20,4 +20,13 @@
     padding-right: 1rem;
 }
 
+.button {
+    border: 1px solid #024794;
+    color: #024794;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+}
+
 /* purgecss end ignore */

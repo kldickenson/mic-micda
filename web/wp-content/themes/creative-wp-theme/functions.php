@@ -46,6 +46,38 @@ function creative_customize_register( $wp_customize ) {
 		'section'  => 'creative_hero_section',
 		'settings' => 'creative_hero_image',
 	) ) );
+
+	// Heading 1.
+	$wp_customize->add_setting( 'creative_heading_1' );
+	$wp_customize->add_control( 'creative_heading_1', array(
+		'label'   => __( 'Heading Line 1' ),
+		'section' => 'creative_hero_section',
+		'type'    => 'text',
+	) );
+
+	// Heading 2
+	$wp_customize->add_setting( 'creative_heading_2' );
+	$wp_customize->add_control( 'creative_heading_2', array(
+		'label'   => __( 'Heading Line 2' ),
+		'section' => 'creative_hero_section',
+		'type'    => 'text',
+	) );
+
+	// Button text.
+	$wp_customize->add_setting( 'creative_button_text' );
+	$wp_customize->add_control( 'creative_button_text', array(
+		'label'   => __( 'Button Text' ),
+		'section' => 'creative_hero_section',
+		'type'    => 'text',
+	) );
+
+	// Button url.
+	$wp_customize->add_setting( 'creative_button_url' );
+	$wp_customize->add_control( 'creative_button_url', array(
+		'label'   => __( 'Button URL' ),
+		'section' => 'creative_hero_section',
+		'type'    => 'text',
+	) );
 }
 
 // Add actions.

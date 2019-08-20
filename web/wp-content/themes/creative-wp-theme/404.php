@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <main role="main" id="main">
+    <main role="main" id="main" class="contained">
         <h1>Page not found</h1>
 
         <p>We’re sorry, the page you were looking for can’t be located.</p>
