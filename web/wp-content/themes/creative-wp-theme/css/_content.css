@@ -18,6 +18,11 @@
     margin-top: 1.5rem;
 }
 
+.content .wp-block-mc-blocks-section-inner {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 .content blockquote,
 .content details {
     max-width: 48rem;

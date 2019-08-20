@@ -193,7 +193,12 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
-    InnerBlocks = _wp$editor.InnerBlocks;
+    InnerBlocks = _wp$editor.InnerBlocks,
+    InspectorControls = _wp$editor.InspectorControls,
+    MediaUpload = _wp$editor.MediaUpload;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    Button = _wp$components.Button;
 registerBlockType("mc-blocks/section-inner", {
   title: __("Section with Inner Blocks", "mc-blocks"),
   icon: "feedback",
@@ -208,12 +213,19 @@ registerBlockType("mc-blocks/section-inner", {
       type: "array",
       source: "children",
       selector: ".section-content"
+    },
+    sectionBackgroundImage: {
+      type: "string",
+      source: "attribute",
+      selector: ".section-background",
+      attribute: "data-src"
     }
   },
   edit: function edit(props) {
     var _props$attributes = props.attributes,
         sectionHeading = _props$attributes.sectionHeading,
         sectionContent = _props$attributes.sectionContent,
+        sectionBackgroundImage = _props$attributes.sectionBackgroundImage,
         setAttributes = props.setAttributes;
 
     var onChangeSectionHeading = function onChangeSectionHeading(newSectionHeading) {
@@ -228,7 +240,27 @@ registerBlockType("mc-blocks/section-inner", {
       });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+    var onImageSelect = function onImageSelect(newImage) {
+      setAttributes({
+        sectionBackgroundImage: newImage.sizes.full.url
+      });
+    };
+
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: __("Background image", "mc-blocks")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: sectionBackgroundImage,
+      alt: ""
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onImageSelect,
+      value: sectionBackgroundImage,
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          onClick: open
+        }, "Change image");
+      }
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
       className: "section-heading"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: __("Section heading", "mc-blocks"),
@@ -243,16 +275,21 @@ registerBlockType("mc-blocks/section-inner", {
       value: sectionContent
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
       allowedBlocks: ["core/table"]
-    }));
+    }))];
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,
         sectionHeading = _props$attributes2.sectionHeading,
-        sectionContent = _props$attributes2.sectionContent;
+        sectionContent = _props$attributes2.sectionContent,
+        sectionBackgroundImage = _props$attributes2.sectionBackgroundImage;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "py-8"
+      className: "py-16 section-background full-width",
+      "data-src": sectionBackgroundImage,
+      style: sectionBackgroundImage ? "background-image: url(".concat(sectionBackgroundImage, ")") : ""
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "contained"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
-      className: "section-heading"
+      className: "section-heading text-michigan-blue"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: sectionHeading
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -262,7 +299,7 @@ registerBlockType("mc-blocks/section-inner", {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "p",
       value: sectionContent
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null)));
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null))));
   }
 });
 
