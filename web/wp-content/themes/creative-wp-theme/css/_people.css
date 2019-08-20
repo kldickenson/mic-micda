@@ -1,0 +1,39 @@
+/* Content specific to /people/ */
+
+.page-template-page-people section {
+   padding: 2rem 4rem;
+}
+#leadership {
+   background-color: #e5e5e5e;
+}
+
+#affiliates {
+   background: white;
+}
+
+.person-photo {
+   width: 250px;
+   height: 270px;
+}
+.person-photo img {
+   height: 270px;
+}
+.person-links li,
+.sorting li {
+   display: inline-block;
+   margin-right: 2rem;
+}
+.sorting {
+   margin-left: 25%;
+}
+.sorting a {
+   font-weight: bold;
+   color: #00247C;
+}
+
+.sorting li.active a,
+.sorting li a:hover,
+.sorting li a:focus {
+   border-bottom: 2px solid #ffcb05;
+   text-decoration: none;
+}
