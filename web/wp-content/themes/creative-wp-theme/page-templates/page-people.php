@@ -25,69 +25,66 @@ while ( have_posts() ) {
 		<?php endif; ?>
     </div>
 
-    <main role="main" id="main" class="contained">
-		<?php get_sidebar(); ?>
+    <main role="main" id="main" class="">
+
         <article>
-            <section id="leadership">
-                <h3>Leadership</h3>
-                <ul>
-                    <?php
-                        $leadership = array(
-                        'post_type' => 'person', // enter custom post type
-                        'category_name' => 'leadership',
-                        'orderby' => 'menu_order',
-                        'order' => 'ASC',
-                        );
-                    ?>
-                    <?php
-                         // passing the query array to template_part
-                        set_query_var('args', $leadership);
-                        get_template_part( 'template-parts/content', 'persons' );
-                    ?>
-
-                </ul>
-            </section>
-            <section id="affiliates">
-                <h3>Affiliates</h3>
-                <div class="sorting mb-4 w-3/4 inline-block">Browse:
+            <h1 class="container mx-auto mb-12"><?php the_field( 'heading' ); ?></h1>
+            <div class="container mx-auto">
+                <?php the_content(); ?>
+            </div>
+           <div class="leadership w-screen pb-4">
+                <section id="leadership" class="container mx-auto pt-16 px-32">
+                    <h3 class="text-xl font-bold mb-8">Leadership</h3>
                     <ul>
-                        <li><a href="#a-_e" onClick="personFilter('A-E')">A-E</a></li>
-                        <li><a href="#f_j" onClick="personFilter('F-J')">F-J</a></li>
-                        <li><a href="#k_o" onClick="personFilter('K-O')">K-O</a></li>
-                        <li><a href="#p_t" onClick="personFilter('P-T')">P-T</a></li>
-                        <li><a href="#u_z" onClick="personFilter('U-Z')">U-Z</a></li>
-                    </ul>
+                        <?php
+                            $leadership = array(
+                            'post_type' => 'person', // enter custom post type
+                            'category_name' => 'leadership',
+                            'orderby' => 'menu_order',
+                            'order' => 'ASC',
+                            );
+                        ?>
+                        <?php
+                            // passing the query array to template_part
+                            set_query_var('args', $leadership);
+                            get_template_part( 'template-parts/content', 'persons' );
+                        ?>
 
-                    <!-- <form action="">
-                        <input type="button" onClick=(person_filter) value="A-E" />
-                        <input type="button" value="F-J" />
-                        <input type="button" value="K-O" />
-                        <input type="button" value="P-T" />
-                        <input type="button" value="U-Z" />
-                    </form> -->
-                </div>
-                <ul>
-                    <!--
-                        For each Person in specific affiliates category (default A-E), sorted by last-name order, output
-                  -->
-                    <?php
-                        $affiliates = array(
-                        'post_type' => 'person', // enter custom post type
-                        'category_name' => 'affiliates', // all affiliates, sorting handled by app.js
-                        'orderby' => 'last_name',
-                        'order' => 'ASC',
-                        );
-                    ?>
-                    <?php
-                         // passing the query array to template_part
-                        set_query_var('args', $affiliates);
-                        get_template_part( 'template-parts/content', 'persons' );
-                    ?>
-                </ul>
-            </section>
+                    </ul>
+                </section>
+            </div>
+            <div class="w-screen affiliates pb-4">
+                <section id="affiliates"  class="container mx-auto pt-16 pb-0 px-32">
+                    <h3 class="text-xl font-bold mb-12 inline-block w-1/4">Affiliates</h3>
+                    <div class="sorting pt-2 inline-block">
+                        <p class="">Browse:</p>
+                        <ul>
+                            <li><a class="text-lg" href="#a-_e" onClick="personFilter('A-E')">A-E</a></li>
+                            <li><a class="text-lg" href="#f_j" onClick="personFilter('F-J')">F-J</a></li>
+                            <li><a class="text-lg" href="#k_o" onClick="personFilter('K-O')">K-O</a></li>
+                            <li><a class="text-lg" href="#p_t" onClick="personFilter('P-T')">P-T</a></li>
+                            <li><a href="#u_z" onClick="personFilter('U-Z')">U-Z</a></li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <?php
+                            $affiliates = array(
+                            'post_type' => 'person', // enter custom post type
+                            'category_name' => 'affiliates', // all affiliates, sorting handled by app.js
+                            'orderby' => 'last_name',
+                            'order' => 'ASC',
+                            );
+                        ?>
+                        <?php
+                            // passing the query array to template_part
+                            set_query_var('args', $affiliates);
+                            get_template_part( 'template-parts/content', 'persons' );
+                        ?>
+                    </ul>
+                </section>
+            </div>
         </article>
     </main>
-<?php }
-?>
+<?php } ?>
 <?php get_footer(); ?>
 

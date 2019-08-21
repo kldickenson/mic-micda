@@ -7,8 +7,6 @@ const personFilter = (category) => {
 	for (var i = 0; i < persons.length; i++) {
 
 		const personCat = persons[i].getElementsByClassName("category");
-		// console.log(personCat[0].innerHTML);
-		// console.log(persons[i].parentElement.className;
 
 		if (personCat[0].innerHTML !== category) {
 			persons[i].parentElement.classList.add("hide");

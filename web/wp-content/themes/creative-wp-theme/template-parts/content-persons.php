@@ -16,12 +16,12 @@
                </div>
                <div class="person-text w-full md:w-3/4">
                <?php if( get_post_meta($post->ID, 'micda_title', true) ) { ?>
-                  <h4><?php echo get_the_title(); ?>, <?php echo get_post_meta($post->ID, 'micda_title', true); ?></h4>
+                  <h4 class="font-xl font-bold text-umblue"><?php echo get_the_title(); ?>, <?php echo get_post_meta($post->ID, 'micda_title', true); ?></h4>
                <?php } else { ?>
-                  <h4><?php echo get_the_title(); ?></h4>
+                   <h4 class="font-xl font-bold text-umblue"><?php echo get_the_title(); ?></h4>
                <?php } ?>
-                  <h5><?php echo get_post_meta($post->ID, 'positions', true); ?></h5>
-                  <p class="mt-2"><?php echo get_post_meta($post->ID, 'education', true); ?></p>
+                  <h5 class="font-normal"><?php echo get_post_meta($post->ID, 'positions', true); ?></h5>
+                  <p class="mt-0 font-light"><?php echo get_post_meta($post->ID, 'education', true); ?></p>
                   <p class="mt-2"><a href="mailto:<?php echo get_post_meta($post->ID, 'email', true); ?>"><?php echo get_post_meta($post->ID, 'email', true); ?></a></p>
                   <ul class="person-links mt-2">
                   <?php if( get_post_meta($post->ID, 'web_page', true) ) { ?>
@@ -40,14 +40,14 @@
                      foreach ( $all_terms as $term ) {
                         echo $term->name;} ?></span>
                   <?php if( get_post_meta($post->ID, 'interests', true) ) { ?>
-                  <details class="mt-8" open>
+                  <details class="mt-6">
                      <summary>
-                        <span className="accordion-heading">Interests</span>
-                        <span className="plus-wrapper">
-                           <span className="plus"></span>
+                        <span class="accordion-heading">Interests</span>
+                        <span class="plus-wrapper">
+                           <span class="plus"></span>
                         </span>
                      </summary>
-                     <div className="accordion-content">
+                     <div class="accordion-content">
                         <?php echo get_post_meta($post->ID, 'interests', true); ?>
                      </div>
                   </details>
