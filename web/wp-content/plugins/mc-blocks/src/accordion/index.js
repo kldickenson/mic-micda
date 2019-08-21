@@ -66,7 +66,7 @@ registerBlockType("mc-blocks/accordion", {
                         <RichText.Content value={accordionHeading}/>
                     </span>
                     <span className="plus-wrapper">
-                        <span className="plus"></span>
+                        <span className="plus"/>
                     </span>
                 </summary>
                 <div className="accordion-content">

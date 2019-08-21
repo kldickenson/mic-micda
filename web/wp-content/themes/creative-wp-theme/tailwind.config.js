@@ -3,6 +3,8 @@ module.exports = {
         colors: {
             "black": "#000000",
             "cobalt": "#024794",
+            "denim": "#485D82",
+            "light-blue-grey": "#B8C5D8",
             "michigan-blue": "#00274c",
             "michigan-maize": "#ffcb05",
             "transparent": "transparent",

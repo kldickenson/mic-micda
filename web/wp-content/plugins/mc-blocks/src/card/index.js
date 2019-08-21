@@ -1,3 +1,5 @@
+import React from "react";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {RichText} = wp.editor;
@@ -71,11 +73,29 @@ registerBlockType("mc-blocks/card", {
     },
     save: props => {
         const {
-            attributes: {accordionHeading, accordionContent}
+            attributes: {cardHeading, cardTopContent, cardBottomContent}
         } = props;
 
         return (
-            <div>hello</div>
+            <div className="border-2 border-denim flex flex-col">
+                <div className="bg-light-blue-grey p-4 flex-grow">
+                    <h3 className="card-heading text-lg text-michigan-blue mb-2 font-bold">
+                        <RichText.Content
+                            value={cardHeading}
+                        />
+                    </h3>
+                    <p className="card-top-content w-full">
+                        <RichText.Content
+                            value={cardTopContent}
+                        />
+                    </p>
+                </div>
+                <p className="card-bottom-content bg-white p-4 mb-0 w-full">
+                    <RichText.Content
+                        value={cardBottomContent}
+                    />
+                </p>
+            </div>
         )
     }
 });
