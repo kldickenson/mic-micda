@@ -2,7 +2,7 @@ import React from "react";
 
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {RichText, InnerBlocks, InspectorControls, MediaUpload} = wp.editor;
+const {RichText, InnerBlocks, InspectorControls, MediaUpload, URLInputButton} = wp.editor;
 const {PanelBody, Button} = wp.components;
 
 registerBlockType("mc-blocks/section", {
@@ -24,15 +24,27 @@ registerBlockType("mc-blocks/section", {
         },
         sectionBackgroundImage: {
             type: "string",
+        },
+        sectionCtaText: {
+            type: "string",
+            source: "text",
+            selector: ".section-cta"
+        },
+        sectionCtaUrl: {
+            type: "string",
             source: "attribute",
-            selector: ".section-background",
-            attribute: "data-src"
+            selector: ".section-cta",
+            attribute: "href"
+        },
+        sectionAlignment: {
+            type: "string",
+            default: "left"
         }
     },
 
     edit: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage},
+            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText},
             setAttributes
         } = props;
 
@@ -46,6 +58,14 @@ registerBlockType("mc-blocks/section", {
 
         const onBackgroundImageSelect = newBackgroundImage => {
             setAttributes({sectionBackgroundImage: newBackgroundImage.sizes.full.url});
+        };
+
+        const onChangeSectionCtaUrl = newSectionCtaUrl => {
+            setAttributes({sectionCtaUrl: newSectionCtaUrl});
+        };
+
+        const onChangeSectionCtaText = newSectionCtaText => {
+            setAttributes({sectionCtaText: newSectionCtaText});
         };
 
         return [
@@ -66,6 +86,7 @@ registerBlockType("mc-blocks/section", {
                     <RichText
                         placeholder={__("Section heading", "mc-blocks")}
                         value={sectionHeading}
+                        formattingControls={[]}
                         onChange={onChangeSectionHeading}
                     />
                 </h3>
@@ -77,16 +98,27 @@ registerBlockType("mc-blocks/section", {
                         value={sectionContent}
                     />
                 </div>
+                <RichText
+                    placeholder={__("CTA button text", "mc-blocks")}
+                    value={sectionCtaText}
+                    onChange={onChangeSectionCtaText}
+                />
+                <URLInputButton
+                    className="section-cta-url"
+                    label={__("CTA URL", "mc-blocks")}
+                    onChange={onChangeSectionCtaUrl}
+                    url={sectionCtaUrl}
+                />
             </div>
         ];
     },
     save: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage}
+            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText}
         } = props;
 
         return (
-            <div className="py-16 section-background full-width" data-src={sectionBackgroundImage}
+            <div className="py-16 section-background full-width"
                  style={sectionBackgroundImage ? `background: url(${sectionBackgroundImage}) no-repeat center/cover` : ""}>
 
                 <div className="section-wrapper contained flex">
@@ -102,6 +134,11 @@ registerBlockType("mc-blocks/section", {
                                 value={sectionContent}
                             />
                         </div>
+                        <a className="section-cta button" href={sectionCtaUrl}>
+                            <RichText.Content
+                                value={sectionCtaText}
+                            />
+                        </a>
                     </div>
                 </div>
             </div>
