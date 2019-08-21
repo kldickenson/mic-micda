@@ -3,6 +3,12 @@
 .page-template-page-people section {
    padding: 2rem 4rem;
 }
+.page-template-page-people .hide {
+   display: none;
+}
+.page-template-page-people .show {
+   display: flex;
+}
 #leadership {
    background-color: #e5e5e5e;
 }

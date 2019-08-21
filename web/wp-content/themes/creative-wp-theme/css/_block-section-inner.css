@@ -1,0 +1,10 @@
+.wp-block-mc-blocks-section-inner .wp-block-mc-blocks-card {
+    flex-basis: 33%;
+    flex-grow: 1;
+    margin-right: 1rem;
+}
+
+.wp-block-mc-blocks-section-inner .wp-block-mc-blocks-card p {
+    margin-bottom: 0;
+    max-width: none;
+}

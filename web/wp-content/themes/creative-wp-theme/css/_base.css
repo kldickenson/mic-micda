@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 body {
     font-family: "Montserrat", sans-serif;
     margin-left: auto;
@@ -34,7 +35,8 @@ details {
     background-color: #f6f6f6;
 }
 
-details > p {
+details .accordion-content {
+    animation: fadein .2s ease-out;
     padding: 1rem 2rem;
 }
 
@@ -107,4 +109,59 @@ details[open] .plus-wrapper .plus::after {
 }
 
 blockquote {
+    font-size: 1.5625rem;
+    text-align: center;
 }
+
+blockquote cite {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table > tbody > tr:first-child {
+    background-color: #e5e5e5;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+table > tbody > tr:first-child td {
+    padding: 0.25rem 1.5rem;
+}
+
+table tr {
+    background-color: #b9c6da;
+}
+
+table td {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    margin-bottom: 4px;
+    padding: 0.75rem 1.5rem;
+}
+
+table > tbody > tr:last-child td {
+    border-bottom: 0;
+}
+
+table > tbody tr > td:last-child {
+    border-right: 0;
+}
+
+address {
+    font-style: normal;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* purgecss end ignore */

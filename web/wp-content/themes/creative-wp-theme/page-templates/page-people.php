@@ -51,11 +51,11 @@ while ( have_posts() ) {
                 <h3>Affiliates</h3>
                 <div class="sorting mb-4 w-3/4 inline-block">Browse:
                     <ul>
-                        <li><a href="#a-_e" onClick="personFilter()">A-E</a></li>
-                        <li><a href="#f_j">F-J</a></li>
-                        <li><a href="#k_o">K-O</a></li>
-                        <li><a href="#p_t">P-T</a></li>
-                        <li><a href="#u_z">U-Z</a></li>
+                        <li><a href="#a-_e" onClick="personFilter('A-E')">A-E</a></li>
+                        <li><a href="#f_j" onClick="personFilter('F-J')">F-J</a></li>
+                        <li><a href="#k_o" onClick="personFilter('K-O')">K-O</a></li>
+                        <li><a href="#p_t" onClick="personFilter('P-T')">P-T</a></li>
+                        <li><a href="#u_z" onClick="personFilter('U-Z')">U-Z</a></li>
                     </ul>
 
                     <!-- <form action="">

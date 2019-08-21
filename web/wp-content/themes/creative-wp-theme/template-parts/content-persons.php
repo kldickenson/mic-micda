@@ -41,8 +41,15 @@
                         echo $term->name;} ?></span>
                   <?php if( get_post_meta($post->ID, 'interests', true) ) { ?>
                   <details class="mt-8" open>
-                     <summary>Interests</summary>
-                     <?php echo get_post_meta($post->ID, 'interests', true); ?>
+                     <summary>
+                        <span className="accordion-heading">Interests</span>
+                        <span className="plus-wrapper">
+                           <span className="plus"></span>
+                        </span>
+                     </summary>
+                     <div className="accordion-content">
+                        <?php echo get_post_meta($post->ID, 'interests', true); ?>
+                     </div>
                   </details>
                   <?php } ?>
                </div>

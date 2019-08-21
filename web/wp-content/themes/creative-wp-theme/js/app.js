@@ -1,38 +1,19 @@
-// Go ahead, use some ES6.
-// const wow = (greeting) => {
-// 	console.log(greeting);
-// };
+// for Affiliates filtering on /people/
+const personFilter = (category) => {
 
-// wow("howdy");
+	const affiliates = document.getElementById("affiliates");
+	const persons = affiliates.getElementsByClassName("person");
 
+	for (var i = 0; i < persons.length; i++) {
 
-const person_filter(event) => {
-   const affiliates = document.getElementById("affiliates");
-   const person = affiliates.querySelector('.person');
-   const personCat = person.querySelector('.category');
-   const var = "a_e"; // default value
-   const target = event.target.value;
-   console.log(target);
-   console.log(personCat);
-  //  switch (target) {
-  //   case 'F-J':
-  //      var = 'f_j';
-  //      break;
-  //   case 'K-O':
-  //      var = 'k_o';
-  //      break;
-  //     case 'P-T':
-  //      var = 'p_t;
-  //      break;
-  //     case 'U-Z':
-  //      var = 'u_z;
-  //      break;
-  //   default:
-  //      var = 'a_e';
-  //      break;
-  // }
-  // if(var !== personCat.value) {
-  //   person.className += ' hidden';
-  // }
+		const personCat = persons[i].getElementsByClassName("category");
+		// console.log(personCat[0].innerHTML);
+		// console.log(persons[i].parentElement.className;
 
-}
+		if (personCat[0].innerHTML !== category) {
+			persons[i].parentElement.classList.add("hide");
+		} else {
+			persons[i].parentElement.classList.remove("hide");
+		}
+	}
+};

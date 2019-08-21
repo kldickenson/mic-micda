@@ -1,3 +1,8 @@
+/* purgecss start ignore */
+.content {
+    margin-bottom: 12rem;
+}
+
 .content p,
 .content ol,
 .content ul,
@@ -8,9 +13,29 @@
     max-width: 42rem;
 }
 
+.content > [class^="wp-block"] {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.content .wp-block-mc-blocks-section-inner {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.content blockquote,
 .content details {
-    margin-bottom: 1rem;
     max-width: 48rem;
+}
+
+.content blockquote p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content table {
+    max-width: 55rem;
+    width: 100%;
 }
 
 .content p {
@@ -39,3 +64,4 @@
 .content ol {
     list-style-type: decimal;
 }
+/* purgecss end ignore */
