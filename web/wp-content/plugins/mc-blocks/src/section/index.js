@@ -22,6 +22,12 @@ registerBlockType("mc-blocks/section", {
             multiline: "p",
             selector: ".section-content"
         },
+        sectionList: {
+            type: "string",
+            source: "html",
+            multiline: "li",
+            selector: ".section-list"
+        },
         sectionBackgroundImage: {
             type: "string",
         },
@@ -35,16 +41,12 @@ registerBlockType("mc-blocks/section", {
             source: "attribute",
             selector: ".section-cta",
             attribute: "href"
-        },
-        sectionAlignment: {
-            type: "string",
-            default: "left"
         }
     },
 
     edit: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText},
+            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText, sectionList},
             setAttributes
         } = props;
 
@@ -66,6 +68,10 @@ registerBlockType("mc-blocks/section", {
 
         const onChangeSectionCtaText = newSectionCtaText => {
             setAttributes({sectionCtaText: newSectionCtaText});
+        };
+
+        const onChangeSectionList = newSectionList => {
+            setAttributes({sectionList: newSectionList});
         };
 
         return [
@@ -99,6 +105,14 @@ registerBlockType("mc-blocks/section", {
                     />
                 </div>
                 <RichText
+                    tagName="ul"
+                    multiline="li"
+                    className="section-list"
+                    placeholder={__("List items", "mc-blocks")}
+                    onChange={onChangeSectionList}
+                    value={sectionList}
+                />
+                <RichText
                     placeholder={__("CTA button text", "mc-blocks")}
                     value={sectionCtaText}
                     onChange={onChangeSectionCtaText}
@@ -114,7 +128,7 @@ registerBlockType("mc-blocks/section", {
     },
     save: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText}
+            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText, sectionList}
         } = props;
 
         return (
@@ -134,11 +148,19 @@ registerBlockType("mc-blocks/section", {
                                 value={sectionContent}
                             />
                         </div>
+                        <ul className="section-list">
+                            <RichText.Content
+                                multiline="li"
+                                value={sectionList}
+                            />
+                        </ul>
+                        {sectionCtaUrl &&
                         <a className="section-cta button" href={sectionCtaUrl}>
                             <RichText.Content
                                 value={sectionCtaText}
                             />
                         </a>
+                        }
                     </div>
                 </div>
             </div>

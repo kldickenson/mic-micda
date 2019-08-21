@@ -9,3 +9,12 @@
 .wp-block-mc-blocks-section .section-wrapper {
     justify-content: flex-end;
 }
+
+.wp-block-mc-blocks-section .button {
+    border-color: #fff;
+    color: #fff;
+}
+
+.wp-block-mc-blocks-section ul li::before {
+    background-color: #ffcb05;
+}

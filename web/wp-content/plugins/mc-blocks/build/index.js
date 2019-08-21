@@ -483,6 +483,12 @@ registerBlockType("mc-blocks/section", {
       multiline: "p",
       selector: ".section-content"
     },
+    sectionList: {
+      type: "string",
+      source: "html",
+      multiline: "li",
+      selector: ".section-list"
+    },
     sectionBackgroundImage: {
       type: "string"
     },
@@ -496,10 +502,6 @@ registerBlockType("mc-blocks/section", {
       source: "attribute",
       selector: ".section-cta",
       attribute: "href"
-    },
-    sectionAlignment: {
-      type: "string",
-      default: "left"
     }
   },
   edit: function edit(props) {
@@ -509,6 +511,7 @@ registerBlockType("mc-blocks/section", {
         sectionBackgroundImage = _props$attributes.sectionBackgroundImage,
         sectionCtaUrl = _props$attributes.sectionCtaUrl,
         sectionCtaText = _props$attributes.sectionCtaText,
+        sectionList = _props$attributes.sectionList,
         setAttributes = props.setAttributes;
 
     var onChangeSectionHeading = function onChangeSectionHeading(newSectionHeading) {
@@ -541,6 +544,12 @@ registerBlockType("mc-blocks/section", {
       });
     };
 
+    var onChangeSectionList = function onChangeSectionList(newSectionList) {
+      setAttributes({
+        sectionList: newSectionList
+      });
+    };
+
     return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
       title: __("Background image", "mc-blocks")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
@@ -570,6 +579,13 @@ registerBlockType("mc-blocks/section", {
       onChange: onChangeSectionContent,
       value: sectionContent
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      tagName: "ul",
+      multiline: "li",
+      className: "section-list",
+      placeholder: __("List items", "mc-blocks"),
+      onChange: onChangeSectionList,
+      value: sectionList
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: __("CTA button text", "mc-blocks"),
       value: sectionCtaText,
       onChange: onChangeSectionCtaText
@@ -586,7 +602,8 @@ registerBlockType("mc-blocks/section", {
         sectionContent = _props$attributes2.sectionContent,
         sectionBackgroundImage = _props$attributes2.sectionBackgroundImage,
         sectionCtaUrl = _props$attributes2.sectionCtaUrl,
-        sectionCtaText = _props$attributes2.sectionCtaText;
+        sectionCtaText = _props$attributes2.sectionCtaText,
+        sectionList = _props$attributes2.sectionList;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "py-16 section-background full-width",
       style: sectionBackgroundImage ? "background: url(".concat(sectionBackgroundImage, ") no-repeat center/cover") : ""
@@ -603,7 +620,12 @@ registerBlockType("mc-blocks/section", {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "p",
       value: sectionContent
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
+      className: "section-list"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      multiline: "li",
+      value: sectionList
+    })), sectionCtaUrl && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       className: "section-cta button",
       href: sectionCtaUrl
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
