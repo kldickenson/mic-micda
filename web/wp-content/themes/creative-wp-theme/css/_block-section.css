@@ -1,0 +1,11 @@
+.wp-block-mc-blocks-section {
+    color: #fff;
+}
+
+.wp-block-mc-blocks-section .section-heading {
+    color: #FBC807;
+}
+
+.wp-block-mc-blocks-section .section-wrapper {
+    justify-content: flex-end;
+}

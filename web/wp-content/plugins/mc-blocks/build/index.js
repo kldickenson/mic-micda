@@ -289,9 +289,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./accordion */ "./src/accordion/index.js");
 /* harmony import */ var _section_inner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./section-inner */ "./src/section-inner/index.js");
 /* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./card */ "./src/card/index.js");
+/* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./section */ "./src/section/index.js");
 /**
  * Import blocks as components.
  */
+
 
 
 
@@ -434,6 +436,136 @@ registerBlockType("mc-blocks/section-inner", {
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "inner-blocks flex w-3/4 flex-grow"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null)))));
+  }
+});
+
+/***/ }),
+
+/***/ "./src/section/index.js":
+/*!******************************!*\
+  !*** ./src/section/index.js ***!
+  \******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InnerBlocks = _wp$editor.InnerBlocks,
+    InspectorControls = _wp$editor.InspectorControls,
+    MediaUpload = _wp$editor.MediaUpload;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    Button = _wp$components.Button;
+registerBlockType("mc-blocks/section", {
+  title: __("Section", "mc-blocks"),
+  icon: "feedback",
+  category: "widgets",
+  attributes: {
+    sectionHeading: {
+      type: "string",
+      source: "html",
+      selector: ".section-heading"
+    },
+    sectionContent: {
+      type: "string",
+      source: "html",
+      multiline: "p",
+      selector: ".section-content"
+    },
+    sectionBackgroundImage: {
+      type: "string",
+      source: "attribute",
+      selector: ".section-background",
+      attribute: "data-src"
+    }
+  },
+  edit: function edit(props) {
+    var _props$attributes = props.attributes,
+        sectionHeading = _props$attributes.sectionHeading,
+        sectionContent = _props$attributes.sectionContent,
+        sectionBackgroundImage = _props$attributes.sectionBackgroundImage,
+        setAttributes = props.setAttributes;
+
+    var onChangeSectionHeading = function onChangeSectionHeading(newSectionHeading) {
+      setAttributes({
+        sectionHeading: newSectionHeading
+      });
+    };
+
+    var onChangeSectionContent = function onChangeSectionContent(newSectionContent) {
+      setAttributes({
+        sectionContent: newSectionContent
+      });
+    };
+
+    var onBackgroundImageSelect = function onBackgroundImageSelect(newBackgroundImage) {
+      setAttributes({
+        sectionBackgroundImage: newBackgroundImage.sizes.full.url
+      });
+    };
+
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: __("Background image", "mc-blocks")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: sectionBackgroundImage,
+      alt: ""
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onBackgroundImageSelect,
+      value: sectionBackgroundImage,
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          onClick: open
+        }, "Change image");
+      }
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      className: "section-heading"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: __("Section heading", "mc-blocks"),
+      value: sectionHeading,
+      onChange: onChangeSectionHeading
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      multiline: "p",
+      placeholder: __("Section content", "mc-blocks"),
+      onChange: onChangeSectionContent,
+      value: sectionContent
+    })))];
+  },
+  save: function save(props) {
+    var _props$attributes2 = props.attributes,
+        sectionHeading = _props$attributes2.sectionHeading,
+        sectionContent = _props$attributes2.sectionContent,
+        sectionBackgroundImage = _props$attributes2.sectionBackgroundImage;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "py-16 section-background full-width",
+      "data-src": sectionBackgroundImage,
+      style: sectionBackgroundImage ? "background: url(".concat(sectionBackgroundImage, ") no-repeat center/cover") : ""
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-wrapper contained flex"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-text w-1/2"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      className: "section-heading"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: sectionHeading
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      multiline: "p",
+      value: sectionContent
+    })))));
   }
 });
 

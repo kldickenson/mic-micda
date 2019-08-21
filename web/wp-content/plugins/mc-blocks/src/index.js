@@ -4,3 +4,4 @@
 import "./accordion";
 import "./section-inner";
 import "./card";
+import "./section";
