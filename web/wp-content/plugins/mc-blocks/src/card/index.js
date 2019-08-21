@@ -27,6 +27,18 @@ registerBlockType("mc-blocks/card", {
         }
     },
 
+    styles: [
+        {
+            name: "default",
+            label: __("Vertical", "mc-blocks"),
+            isDefault: true
+        },
+        {
+            name: "horizontal",
+            label: __("Horizontal", "mc-blocks")
+        }
+    ],
+
     edit: props => {
         const {
             attributes: {cardHeading, cardTopContent, cardBottomContent},
@@ -90,11 +102,15 @@ registerBlockType("mc-blocks/card", {
                         />
                     </p>
                 </div>
+
+                {cardBottomContent &&
                 <p className="card-bottom-content bg-white p-4 mb-0 w-full">
                     <RichText.Content
                         value={cardBottomContent}
                     />
                 </p>
+                }
+
             </div>
         )
     }

@@ -1,3 +1,5 @@
+import React from "react";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {RichText, InnerBlocks, InspectorControls, MediaUpload} = wp.editor;
@@ -26,6 +28,18 @@ registerBlockType("mc-blocks/section-inner", {
             attribute: "data-src"
         }
     },
+
+    styles: [
+        {
+            name: "default",
+            label: __("Standard", "mc-blocks"),
+            isDefault: true
+        },
+        {
+            name: "stacked",
+            label: __("Stacked", "mc-blocks")
+        }
+    ],
 
     edit: props => {
         const {
@@ -74,9 +88,13 @@ registerBlockType("mc-blocks/section-inner", {
                         value={sectionContent}
                     />
                 </div>
-                <InnerBlocks
-                    allowedBlocks={["core/table", "mc-blocks/card"]}
-                />
+                {/* InnerBlocks will throw an error when trying to render a styles preview.
+                    Following conditional will not render a preview and not throw an error.
+                    Found the fix here: https://github.com/WordPress/gutenberg/issues/9897
+                 */}
+                {typeof props.insertBlocksAfter !== "undefined" ?
+                    <InnerBlocks allowedBlocks={["core/table", "mc-blocks/card"]}/>:<div />
+                }
             </div>
         ];
     },
@@ -87,7 +105,7 @@ registerBlockType("mc-blocks/section-inner", {
 
         return (
             <div className="py-16 section-background full-width" data-src={sectionBackgroundImage}
-                 style={sectionBackgroundImage ? `background-image: url(${sectionBackgroundImage})` : ""}>
+                 style={sectionBackgroundImage ? `background: url(${sectionBackgroundImage}) no-repeat center/cover` : ""}>
 
                 <div className="contained">
                     <h2 className="section-heading text-michigan-blue">
@@ -96,13 +114,15 @@ registerBlockType("mc-blocks/section-inner", {
                         />
                     </h2>
                     <div className="flex">
-                        <div className="section-content mr-12 max-w-15">
+                        <div className="section-content mr-12 w-1/4">
                             <RichText.Content
                                 multiline="p"
                                 value={sectionContent}
                             />
                         </div>
-                        <InnerBlocks.Content/>
+                        <div className="inner-blocks flex w-3/4 flex-grow">
+                            <InnerBlocks.Content/>
+                        </div>
                     </div>
                 </div>
             </div>

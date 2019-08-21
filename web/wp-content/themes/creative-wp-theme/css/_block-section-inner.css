@@ -8,3 +8,13 @@
     margin-bottom: 0;
     max-width: none;
 }
+
+.wp-block-mc-blocks-section-inner.is-style-stacked .inner-blocks {
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: -0.5rem;
+}
+
+.wp-block-mc-blocks-section-inner.is-style-stacked .wp-block-mc-blocks-card {
+    margin: 0.5rem;
+}

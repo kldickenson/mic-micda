@@ -1,0 +1,12 @@
+
+.wp-block-mc-blocks-card.is-style-horizontal {
+    flex-direction: row;
+}
+
+.wp-block-mc-blocks-card.is-style-horizontal > div {
+    flex-basis: 66%;
+}
+
+.wp-block-mc-blocks-card.is-style-horizontal > p {
+    flex-basis: 33%;
+}

@@ -197,6 +197,14 @@ registerBlockType("mc-blocks/card", {
       selector: ".card-bottom-content"
     }
   },
+  styles: [{
+    name: "default",
+    label: __("Vertical", "mc-blocks"),
+    isDefault: true
+  }, {
+    name: "horizontal",
+    label: __("Horizontal", "mc-blocks")
+  }],
   edit: function edit(props) {
     var _props$attributes = props.attributes,
         cardHeading = _props$attributes.cardHeading,
@@ -259,7 +267,7 @@ registerBlockType("mc-blocks/card", {
       className: "card-top-content w-full"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: cardTopContent
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    }))), cardBottomContent && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
       className: "card-bottom-content bg-white p-4 mb-0 w-full"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: cardBottomContent
@@ -301,6 +309,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
@@ -334,6 +345,14 @@ registerBlockType("mc-blocks/section-inner", {
       attribute: "data-src"
     }
   },
+  styles: [{
+    name: "default",
+    label: __("Standard", "mc-blocks"),
+    isDefault: true
+  }, {
+    name: "stacked",
+    label: __("Stacked", "mc-blocks")
+  }],
   edit: function edit(props) {
     var _props$attributes = props.attributes,
         sectionHeading = _props$attributes.sectionHeading,
@@ -386,9 +405,9 @@ registerBlockType("mc-blocks/section-inner", {
       placeholder: __("Section content", "mc-blocks"),
       onChange: onChangeSectionContent,
       value: sectionContent
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
+    })), typeof props.insertBlocksAfter !== "undefined" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
       allowedBlocks: ["core/table", "mc-blocks/card"]
-    }))];
+    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null))];
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,
@@ -398,7 +417,7 @@ registerBlockType("mc-blocks/section-inner", {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "py-16 section-background full-width",
       "data-src": sectionBackgroundImage,
-      style: sectionBackgroundImage ? "background-image: url(".concat(sectionBackgroundImage, ")") : ""
+      style: sectionBackgroundImage ? "background: url(".concat(sectionBackgroundImage, ") no-repeat center/cover") : ""
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "contained"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
@@ -408,11 +427,13 @@ registerBlockType("mc-blocks/section-inner", {
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "flex"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "section-content mr-12 max-w-15"
+      className: "section-content mr-12 w-1/4"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "p",
       value: sectionContent
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null))));
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "inner-blocks flex w-3/4 flex-grow"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null)))));
   }
 });
 
