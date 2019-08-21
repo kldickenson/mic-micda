@@ -1,5 +1,5 @@
 <?php
-   // receiving the arguments from the query arry in page-people
+   // receiving the arguments from the query array in page-people
    $args = get_query_var('args');
 
    $loop = new WP_Query( $args );
@@ -35,7 +35,10 @@
                   <?php } ?>
                   </ul>
                   <span class="hidden last-name"><?php echo get_post_meta($post->ID, 'last_name', true); ?></span>
-                  <span class="hidden category"><?php echo get_term_by('slug'); ?></span>
+                  <span class="hidden category"><?php
+                     $all_terms = wp_get_post_terms($post->ID, 'category');
+                     foreach ( $all_terms as $term ) {
+                        echo $term->name;} ?></span>
                   <?php if( get_post_meta($post->ID, 'interests', true) ) { ?>
                   <details class="mt-8" open>
                      <summary>Interests</summary>
