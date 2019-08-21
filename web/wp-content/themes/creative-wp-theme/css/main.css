@@ -4,5 +4,6 @@
 @import "./_base.css";
 @import "tailwindcss/utilities";
 @import "./_utilities.css";
+@import "./_animation.css";
 @import "./_main-menu.css";
 @import "./_content.css";
