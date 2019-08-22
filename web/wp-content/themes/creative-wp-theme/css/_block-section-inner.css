@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 .wp-block-mc-blocks-section-inner .wp-block-mc-blocks-card {
     flex-basis: 33%;
     flex-grow: 1;
@@ -18,3 +19,4 @@
 .wp-block-mc-blocks-section-inner.is-style-stacked .wp-block-mc-blocks-card {
     margin: 0.5rem;
 }
+/* purgecss end ignore */

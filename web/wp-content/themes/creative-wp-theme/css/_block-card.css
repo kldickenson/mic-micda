@@ -1,4 +1,4 @@
-
+/* purgecss start ignore */
 .wp-block-mc-blocks-card.is-style-horizontal {
     flex-direction: row;
 }
@@ -10,3 +10,4 @@
 .wp-block-mc-blocks-card.is-style-horizontal > p {
     flex-basis: 33%;
 }
+/* purgecss end ignore */

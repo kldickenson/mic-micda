@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 .wp-block-mc-blocks-section {
     color: #fff;
     padding-bottom: 6rem;
@@ -89,3 +90,4 @@
 .wp-block-mc-blocks-section.white ul li::before {
     background-color: #00274c;
 }
+/* purgecss end ignore */
