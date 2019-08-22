@@ -8,7 +8,7 @@ $twitter  = get_theme_mod( 'creative_contact_twitter' );
 $facebook = get_theme_mod( 'creative_contact_facebook' );
 ?>
 
-<footer class="bg-michigan-blue py-16 text-white">
+<footer class="bg-michigan-blue py-16 text-white border-t-2 border-michigan-maize">
     <div class="contained md:flex justify-between">
         <div class="flex">
             <img class="mr-12" src="<?php echo $theme ?>/img/block-m.svg" alt="">
