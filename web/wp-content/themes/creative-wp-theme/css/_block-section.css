@@ -90,4 +90,8 @@
 .wp-block-mc-blocks-section.white ul li::before {
     background-color: #00274c;
 }
+
+.wp-block-mc-blocks-section ul li {
+    margin-bottom: 1rem;
+}
 /* purgecss end ignore */

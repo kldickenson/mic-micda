@@ -7,7 +7,8 @@
     font-size: 2.5rem;
 }
 
-.home .wp-block-mc-blocks-section .section-content {
+.home .wp-block-mc-blocks-section .section-content,
+.home .wp-block-mc-blocks-section .section-list {
     font-size: 1.125rem;
 }
 /* purgecss end ignore */
