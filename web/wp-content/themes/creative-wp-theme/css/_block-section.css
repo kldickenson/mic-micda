@@ -26,13 +26,20 @@
 }
 
 .wp-block-mc-blocks-section.has-image.section-left .section-heading,
-.wp-block-mc-blocks-section.has-image.section-left .section-content p {
+.wp-block-mc-blocks-section.has-image.section-left .section-content p,
+.wp-block-mc-blocks-section.has-image.section-left .section-list {
     margin-left: auto;
     margin-right: 3rem;
 }
 
+.wp-block-mc-blocks-section.has-image.section-left .section-list li {
+    margin-left: 1rem;
+}
+
 .wp-block-mc-blocks-section.blue a,
-.wp-block-mc-blocks-section.light-blue a {
+.wp-block-mc-blocks-section.light-blue a,
+.wp-block-mc-blocks-section.blue .section-heading,
+.wp-block-mc-blocks-section.light-blue .section-heading {
     color: #ffcb05;
 }
 
@@ -57,7 +64,8 @@
 }
 
 .wp-block-mc-blocks-section .section-heading {
-    color: #FBC807;
+    line-height: 1;
+    margin-bottom: 2rem;
 }
 
 .wp-block-mc-blocks-section .section-left {
@@ -73,6 +81,11 @@
     color: #fff;
 }
 
-.wp-block-mc-blocks-section ul li::before {
+.wp-block-mc-blocks-section.light-blue ul li::before,
+.wp-block-mc-blocks-section.blue ul li::before {
     background-color: #ffcb05;
+}
+
+.wp-block-mc-blocks-section.white ul li::before {
+    background-color: #00274c;
 }
