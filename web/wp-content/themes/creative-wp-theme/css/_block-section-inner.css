@@ -10,6 +10,10 @@
     max-width: none;
 }
 
+.wp-block-mc-blocks-section-inner .section-content {
+    max-width: 275px;
+}
+
 .wp-block-mc-blocks-section-inner.is-style-stacked .inner-blocks {
     flex-direction: column;
     flex-wrap: wrap;
