@@ -460,13 +460,14 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
-    InnerBlocks = _wp$editor.InnerBlocks,
     InspectorControls = _wp$editor.InspectorControls,
     MediaUpload = _wp$editor.MediaUpload,
-    URLInputButton = _wp$editor.URLInputButton;
+    URLInputButton = _wp$editor.URLInputButton,
+    ColorPalette = _wp$editor.ColorPalette;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    RadioControl = _wp$components.RadioControl;
 registerBlockType("mc-blocks/section", {
   title: __("Section", "mc-blocks"),
   icon: "feedback",
@@ -489,19 +490,38 @@ registerBlockType("mc-blocks/section", {
       multiline: "li",
       selector: ".section-list"
     },
+    sectionImage: {
+      type: "string",
+      source: "attribute",
+      selector: ".section-image",
+      attribute: "src"
+    },
+    sectionImageAlt: {
+      type: "string",
+      source: "attribute",
+      selector: ".section-image",
+      attribute: "alt"
+    },
     sectionBackgroundImage: {
       type: "string"
     },
-    sectionCtaText: {
-      type: "string",
-      source: "text",
-      selector: ".section-cta"
-    },
-    sectionCtaUrl: {
+    sectionLink: {
       type: "string",
       source: "attribute",
-      selector: ".section-cta",
+      selector: ".section-link",
       attribute: "href"
+    },
+    sectionTextAlignment: {
+      type: "string",
+      default: "section-right"
+    },
+    sectionBackgroundColor: {
+      type: "string",
+      default: "#fff"
+    },
+    sectionBackgroundColorName: {
+      type: "string",
+      default: "white"
     }
   },
   edit: function edit(props) {
@@ -509,9 +529,13 @@ registerBlockType("mc-blocks/section", {
         sectionHeading = _props$attributes.sectionHeading,
         sectionContent = _props$attributes.sectionContent,
         sectionBackgroundImage = _props$attributes.sectionBackgroundImage,
-        sectionCtaUrl = _props$attributes.sectionCtaUrl,
-        sectionCtaText = _props$attributes.sectionCtaText,
+        sectionLink = _props$attributes.sectionLink,
         sectionList = _props$attributes.sectionList,
+        sectionTextAlignment = _props$attributes.sectionTextAlignment,
+        sectionImage = _props$attributes.sectionImage,
+        sectionImageAlt = _props$attributes.sectionImageAlt,
+        sectionBackgroundColor = _props$attributes.sectionBackgroundColor,
+        sectionBackgroundColorName = _props$attributes.sectionBackgroundColorName,
         setAttributes = props.setAttributes;
 
     var onChangeSectionHeading = function onChangeSectionHeading(newSectionHeading) {
@@ -532,15 +556,9 @@ registerBlockType("mc-blocks/section", {
       });
     };
 
-    var onChangeSectionCtaUrl = function onChangeSectionCtaUrl(newSectionCtaUrl) {
+    var onChangeSectionLink = function onChangeSectionLink(newSectionLink) {
       setAttributes({
-        sectionCtaUrl: newSectionCtaUrl
-      });
-    };
-
-    var onChangeSectionCtaText = function onChangeSectionCtaText(newSectionCtaText) {
-      setAttributes({
-        sectionCtaText: newSectionCtaText
+        sectionLink: newSectionLink
       });
     };
 
@@ -550,12 +568,51 @@ registerBlockType("mc-blocks/section", {
       });
     };
 
+    var onChangeSectionTextAlignment = function onChangeSectionTextAlignment(newSectionTextAlignment) {
+      setAttributes({
+        sectionTextAlignment: newSectionTextAlignment
+      });
+    };
+
+    var onChangeSectionImage = function onChangeSectionImage(newSectionImage) {
+      setAttributes({
+        sectionImage: newSectionImage.sizes.full.url,
+        sectionImageAlt: newSectionImage.alt
+      });
+    };
+
+    var onChangeSectionBackgroundColor = function onChangeSectionBackgroundColor(newSectionBackgroundColor) {
+      var matchingColor = colors.find(function (color) {
+        return newSectionBackgroundColor === color.color;
+      });
+      setAttributes({
+        sectionBackgroundColor: newSectionBackgroundColor,
+        sectionBackgroundColorName: matchingColor.name
+      });
+    };
+
+    var colors = [{
+      name: "white",
+      color: "#fff"
+    }, {
+      name: "blue",
+      color: "#00274c"
+    }, {
+      name: "light-blue",
+      color: "#465d85"
+    }];
     return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: __("Background image", "mc-blocks")
+      title: __("Section options", "mc-blocks")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: sectionBackgroundImage,
       alt: ""
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, __("Background image", "mc-blocks")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
       onSelect: onBackgroundImageSelect,
       value: sectionBackgroundImage,
       render: function render(_ref) {
@@ -564,13 +621,57 @@ registerBlockType("mc-blocks/section", {
           onClick: open
         }, "Change image");
       }
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
+      label: __("Text alignment", "mc-blocks"),
+      selected: sectionTextAlignment,
+      options: [{
+        label: "Left",
+        value: "section-left"
+      }, {
+        label: "Right",
+        value: "section-right"
+      }],
+      onChange: onChangeSectionTextAlignment
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, __("Background color", "mc-blocks")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
+      value: sectionBackgroundColor,
+      onChange: onChangeSectionBackgroundColor,
+      colors: colors
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, __("Link", "mc-blocks")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
+      className: "section-cta-url",
+      label: __("CTA URL", "mc-blocks"),
+      onChange: onChangeSectionLink,
+      url: sectionLink
+    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
       className: "section-heading"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: __("Section heading", "mc-blocks"),
       value: sectionHeading,
       formattingControls: [],
       onChange: onChangeSectionHeading
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-image"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: sectionImage,
+      alt: sectionImageAlt
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onChangeSectionImage,
+      value: sectionImage,
+      render: function render(_ref2) {
+        var open = _ref2.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          onClick: open
+        }, "Change section image");
+      }
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "section-content"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
@@ -585,15 +686,6 @@ registerBlockType("mc-blocks/section", {
       placeholder: __("List items", "mc-blocks"),
       onChange: onChangeSectionList,
       value: sectionList
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
-      placeholder: __("CTA button text", "mc-blocks"),
-      value: sectionCtaText,
-      onChange: onChangeSectionCtaText
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
-      className: "section-cta-url",
-      label: __("CTA URL", "mc-blocks"),
-      onChange: onChangeSectionCtaUrl,
-      url: sectionCtaUrl
     }))];
   },
   save: function save(props) {
@@ -601,17 +693,32 @@ registerBlockType("mc-blocks/section", {
         sectionHeading = _props$attributes2.sectionHeading,
         sectionContent = _props$attributes2.sectionContent,
         sectionBackgroundImage = _props$attributes2.sectionBackgroundImage,
-        sectionCtaUrl = _props$attributes2.sectionCtaUrl,
-        sectionCtaText = _props$attributes2.sectionCtaText,
-        sectionList = _props$attributes2.sectionList;
+        sectionLink = _props$attributes2.sectionLink,
+        sectionList = _props$attributes2.sectionList,
+        sectionTextAlignment = _props$attributes2.sectionTextAlignment,
+        sectionImage = _props$attributes2.sectionImage,
+        sectionImageAlt = _props$attributes2.sectionImageAlt,
+        sectionBackgroundColor = _props$attributes2.sectionBackgroundColor,
+        sectionBackgroundColorName = _props$attributes2.sectionBackgroundColorName;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "py-16 section-background full-width",
+      className: "section-background full-width ".concat(sectionBackgroundColorName, " ").concat(sectionTextAlignment, " ").concat(sectionImage ? "has-image" : ""),
       style: sectionBackgroundImage ? "background: url(".concat(sectionBackgroundImage, ") no-repeat center/cover") : ""
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "section-wrapper contained flex"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "section-wrapper flex ".concat(!sectionImage ? "contained" : "")
+    }, sectionImage && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      className: "section-image w-1/2",
+      src: sectionImage,
+      alt: sectionImageAlt
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "section-text w-1/2"
+    }, sectionLink && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: sectionLink,
+      className: "section-link"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      className: "section-heading"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: sectionHeading
+    }))), !sectionLink && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       className: "section-heading"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: sectionHeading
@@ -620,16 +727,11 @@ registerBlockType("mc-blocks/section", {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "p",
       value: sectionContent
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
+    })), sectionList && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
       className: "section-list"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "li",
       value: sectionList
-    })), sectionCtaUrl && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
-      className: "section-cta button",
-      href: sectionCtaUrl
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
-      value: sectionCtaText
     })))));
   }
 });

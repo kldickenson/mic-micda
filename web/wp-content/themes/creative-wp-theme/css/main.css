@@ -1,8 +1,10 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* purgecss start ignore */
 @import "_fonts.css";
 @import "./_base.css";
-@import "tailwindcss/utilities";
 @import "./_utilities.css";
 @import "./_animation.css";
 @import "./_main-menu.css";
@@ -11,3 +13,4 @@
 @import "./_block-card.css";
 @import "./_block-section.css";
 @import "_block-section-inner.css";
+/* purgecss end ignore */

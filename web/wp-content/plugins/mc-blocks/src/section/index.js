@@ -2,8 +2,8 @@ import React from "react";
 
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {RichText, InnerBlocks, InspectorControls, MediaUpload, URLInputButton} = wp.editor;
-const {PanelBody, Button} = wp.components;
+const {RichText, InspectorControls, MediaUpload, URLInputButton, ColorPalette} = wp.editor;
+const {PanelBody, Button, RadioControl} = wp.components;
 
 registerBlockType("mc-blocks/section", {
     title: __("Section", "mc-blocks"),
@@ -28,25 +28,55 @@ registerBlockType("mc-blocks/section", {
             multiline: "li",
             selector: ".section-list"
         },
+        sectionImage: {
+            type: "string",
+            source: "attribute",
+            selector: ".section-image",
+            attribute: "src"
+        },
+        sectionImageAlt: {
+            type: "string",
+            source: "attribute",
+            selector: ".section-image",
+            attribute: "alt"
+        },
         sectionBackgroundImage: {
             type: "string",
         },
-        sectionCtaText: {
-            type: "string",
-            source: "text",
-            selector: ".section-cta"
-        },
-        sectionCtaUrl: {
+        sectionLink: {
             type: "string",
             source: "attribute",
-            selector: ".section-cta",
+            selector: ".section-link",
             attribute: "href"
+        },
+        sectionTextAlignment: {
+            type: "string",
+            default: "section-right"
+        },
+        sectionBackgroundColor: {
+            type: "string",
+            default: "#fff"
+        },
+        sectionBackgroundColorName: {
+            type: "string",
+            default: "white"
         }
     },
 
     edit: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText, sectionList},
+            attributes: {
+                sectionHeading,
+                sectionContent,
+                sectionBackgroundImage,
+                sectionLink,
+                sectionList,
+                sectionTextAlignment,
+                sectionImage,
+                sectionImageAlt,
+                sectionBackgroundColor,
+                sectionBackgroundColorName
+            },
             setAttributes
         } = props;
 
@@ -62,29 +92,93 @@ registerBlockType("mc-blocks/section", {
             setAttributes({sectionBackgroundImage: newBackgroundImage.sizes.full.url});
         };
 
-        const onChangeSectionCtaUrl = newSectionCtaUrl => {
-            setAttributes({sectionCtaUrl: newSectionCtaUrl});
-        };
-
-        const onChangeSectionCtaText = newSectionCtaText => {
-            setAttributes({sectionCtaText: newSectionCtaText});
+        const onChangeSectionLink = newSectionLink => {
+            setAttributes({sectionLink: newSectionLink});
         };
 
         const onChangeSectionList = newSectionList => {
             setAttributes({sectionList: newSectionList});
         };
 
+        const onChangeSectionTextAlignment = newSectionTextAlignment => {
+            setAttributes({sectionTextAlignment: newSectionTextAlignment});
+        };
+
+        const onChangeSectionImage = newSectionImage => {
+            setAttributes({
+                sectionImage: newSectionImage.sizes.full.url,
+                sectionImageAlt: newSectionImage.alt
+            });
+        };
+
+        const onChangeSectionBackgroundColor = newSectionBackgroundColor => {
+            const matchingColor = colors.find((color) => newSectionBackgroundColor === color.color);
+
+            setAttributes({
+                sectionBackgroundColor: newSectionBackgroundColor,
+                sectionBackgroundColorName: matchingColor.name
+            });
+        };
+
+        const colors = [
+            {name: "white", color: "#fff"},
+            {name: "blue", color: "#00274c"},
+            {name: "light-blue", color: "#465d85"}
+        ];
+
         return [
             <InspectorControls>
-                <PanelBody title={__("Background image", "mc-blocks")}>
-                    <img src={sectionBackgroundImage} alt=""/>
-                    <MediaUpload
-                        onSelect={onBackgroundImageSelect}
-                        value={sectionBackgroundImage}
-                        render={({open}) => (
-                            <Button onClick={open}>Change image</Button>
-                        )}
-                    />
+                <PanelBody title={__("Section options", "mc-blocks")}>
+                    <div className="components-base-control">
+                        <div className="components-base-control__field">
+                            <img src={sectionBackgroundImage} alt=""/>
+                            <label className="components-base-control__label">
+                                {__("Background image", "mc-blocks")}
+                            </label>
+                            <MediaUpload
+                                onSelect={onBackgroundImageSelect}
+                                value={sectionBackgroundImage}
+                                render={({open}) => (
+                                    <Button onClick={open}>Change image</Button>
+                                )}
+                            />
+                        </div>
+
+                        <div className="components-base-control__field">
+                            <RadioControl
+                                label={__("Text alignment", "mc-blocks")}
+                                selected={sectionTextAlignment}
+                                options={[
+                                    {label: "Left", value: "section-left"},
+                                    {label: "Right", value: "section-right"}
+                                ]}
+                                onChange={onChangeSectionTextAlignment}
+                            />
+                        </div>
+
+                        <div className="components-base-control__field">
+                            <label className="components-base-control__label">
+                                {__("Background color", "mc-blocks")}
+                            </label>
+                            <ColorPalette
+                                value={sectionBackgroundColor}
+                                onChange={onChangeSectionBackgroundColor}
+                                colors={colors}
+                            />
+                        </div>
+
+                        <div className="components-base-control__field">
+                            <label className="components-base-control__label">
+                                {__("Link", "mc-blocks")}
+                            </label>
+                            <URLInputButton
+                                className="section-cta-url"
+                                label={__("CTA URL", "mc-blocks")}
+                                onChange={onChangeSectionLink}
+                                url={sectionLink}
+                            />
+                        </div>
+                    </div>
                 </PanelBody>
             </InspectorControls>,
             <div>
@@ -96,6 +190,18 @@ registerBlockType("mc-blocks/section", {
                         onChange={onChangeSectionHeading}
                     />
                 </h3>
+
+                <div className="section-image">
+                    <img src={sectionImage} alt={sectionImageAlt}/>
+                    <MediaUpload
+                        onSelect={onChangeSectionImage}
+                        value={sectionImage}
+                        render={({open}) => (
+                            <Button onClick={open}>Change section image</Button>
+                        )}
+                    />
+                </div>
+
                 <div className="section-content">
                     <RichText
                         multiline="p"
@@ -112,54 +218,68 @@ registerBlockType("mc-blocks/section", {
                     onChange={onChangeSectionList}
                     value={sectionList}
                 />
-                <RichText
-                    placeholder={__("CTA button text", "mc-blocks")}
-                    value={sectionCtaText}
-                    onChange={onChangeSectionCtaText}
-                />
-                <URLInputButton
-                    className="section-cta-url"
-                    label={__("CTA URL", "mc-blocks")}
-                    onChange={onChangeSectionCtaUrl}
-                    url={sectionCtaUrl}
-                />
             </div>
         ];
     },
     save: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionCtaUrl, sectionCtaText, sectionList}
+            attributes: {
+                sectionHeading,
+                sectionContent,
+                sectionBackgroundImage,
+                sectionLink,
+                sectionList,
+                sectionTextAlignment,
+                sectionImage,
+                sectionImageAlt,
+                sectionBackgroundColor,
+                sectionBackgroundColorName
+            }
         } = props;
 
         return (
-            <div className="py-16 section-background full-width"
-                 style={sectionBackgroundImage ? `background: url(${sectionBackgroundImage}) no-repeat center/cover` : ""}>
+            <div
+                className={`section-background full-width ${sectionBackgroundColorName} ${sectionTextAlignment} ${sectionImage ? "has-image" : ""}`}
+                style={sectionBackgroundImage ? `background: url(${sectionBackgroundImage}) no-repeat center/cover` : ""}>
 
-                <div className="section-wrapper contained flex">
+                <div className={`section-wrapper flex ${!sectionImage ? "contained" : ""}`}>
+                    {sectionImage &&
+                    <img className="section-image w-1/2" src={sectionImage} alt={sectionImageAlt}/>
+                    }
+
                     <div className="section-text w-1/2">
+                        {sectionLink &&
+                        <a href={sectionLink} className="section-link">
+                            <h2 className="section-heading">
+                                <RichText.Content
+                                    value={sectionHeading}
+                                />
+                            </h2>
+                        </a>
+                        }
+
+                        {!sectionLink &&
                         <h2 className="section-heading">
                             <RichText.Content
                                 value={sectionHeading}
                             />
                         </h2>
+                        }
+
                         <div className="section-content">
                             <RichText.Content
                                 multiline="p"
                                 value={sectionContent}
                             />
                         </div>
+
+                        {sectionList &&
                         <ul className="section-list">
                             <RichText.Content
                                 multiline="li"
                                 value={sectionList}
                             />
                         </ul>
-                        {sectionCtaUrl &&
-                        <a className="section-cta button" href={sectionCtaUrl}>
-                            <RichText.Content
-                                value={sectionCtaText}
-                            />
-                        </a>
                         }
                     </div>
                 </div>
