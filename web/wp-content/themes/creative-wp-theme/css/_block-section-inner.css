@@ -22,5 +22,6 @@
 
 .wp-block-mc-blocks-section-inner.is-style-stacked .wp-block-mc-blocks-card {
     margin: 0.5rem;
+    width: 50%;
 }
 /* purgecss end ignore */
