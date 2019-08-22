@@ -77,6 +77,10 @@
     justify-content: flex-end;
 }
 
+.wp-block-mc-blocks-section.section-right.has-image .section-wrapper {
+    justify-content: normal;
+}
+
 .wp-block-mc-blocks-section .button {
     border-color: #fff;
     color: #fff;
