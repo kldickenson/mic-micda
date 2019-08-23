@@ -28,8 +28,9 @@ function creative_widgets_init() {
 // Add any CSS and JS to our project.
 function creative_theme_assets() {
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/dist/style.css' );
-	wp_enqueue_script( 'script', get_template_directory_uri() . '/dist/app.js' );
-	wp_enqueue_script( 'details-polyfill', get_template_directory_uri() . '/vendor/details-element-polyfill.js' );
+	wp_enqueue_script( 'siema', get_template_directory_uri() . '/vendor/siema.min.js', $deps = array(), $ver = false, $in_footer = true );
+	wp_enqueue_script( 'details-polyfill', get_template_directory_uri() . '/vendor/details-element-polyfill.js', $deps = array(), $ver = false, $in_footer = true );
+	wp_enqueue_script( 'script', get_template_directory_uri() . '/dist/app.js', $deps = array(), $ver = false, $in_footer = true );
 }
 
 function creative_customize_register( $wp_customize ) {

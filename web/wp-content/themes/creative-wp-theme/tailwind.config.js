@@ -16,7 +16,9 @@ module.exports = {
         },
         extend: {
             inset: {
-                "2": "0.5rem"
+                "-2": "-2rem",
+                "2": "0.5rem",
+                "33": "33%"
             },
             maxHeight: {
                 "20": "20rem",
