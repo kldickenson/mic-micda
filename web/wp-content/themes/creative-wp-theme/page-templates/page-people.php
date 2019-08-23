@@ -72,7 +72,8 @@ while ( have_posts() ) {
                             $affiliates = array(
                             'post_type' => 'people', // enter custom post type
                             'category_name' => 'affiliates', // all affiliates, sorting handled by app.js
-                            'orderby' => 'last_name',
+                            'orderby' => 'meta_value',
+                            'meta_key' => 'last_name',
                             'order' => 'ASC',
                             'posts_per_page' => -1,
                             );
