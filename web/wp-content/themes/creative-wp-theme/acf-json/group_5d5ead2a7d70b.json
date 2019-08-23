@@ -87,7 +87,7 @@
             "key": "field_5d5eae17dea87",
             "label": "Education",
             "name": "education",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -98,9 +98,9 @@
             },
             "default_value": "",
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "br"
         },
         {
             "key": "field_5d5eae2adea88",
@@ -197,5 +197,5 @@
     ],
     "active": 1,
     "description": "Custom fields for MiCDA leadership and affiliates",
-    "modified": 1566566943
+    "modified": 1566584206
 }
