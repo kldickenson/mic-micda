@@ -38,7 +38,7 @@ while ( have_posts() ) {
                     <ul>
                         <?php
                             $leadership = array(
-                            'post_type' => 'person', // enter custom post type
+                            'post_type' => 'people', // enter custom post type
                             'category_name' => 'leadership',
                             'orderby' => 'menu_order',
                             'order' => 'ASC',
@@ -69,7 +69,7 @@ while ( have_posts() ) {
                     <ul>
                         <?php
                             $affiliates = array(
-                            'post_type' => 'person', // enter custom post type
+                            'post_type' => 'people', // enter custom post type
                             'category_name' => 'affiliates', // all affiliates, sorting handled by app.js
                             'orderby' => 'last_name',
                             'order' => 'ASC',
@@ -77,8 +77,8 @@ while ( have_posts() ) {
                         ?>
                         <?php
                             // passing the query array to template_part
-                            set_query_var('args', $affiliates);
-                            get_template_part( 'template-parts/content', 'persons' );
+                            // set_query_var('args', $affiliates);
+                            // get_template_part( 'template-parts/content', 'persons' );
                         ?>
                     </ul>
                 </section>
