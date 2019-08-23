@@ -1,0 +1,51 @@
+/* Content specific to /people/ */
+
+/* class specific for affiliates sorting */
+.page-template-page-people .hide {
+   display: none;
+}
+
+.page-template-page-people section {
+   /* padding: 4rem 8rem; */
+
+}
+.page-template-page-people h3 {
+      color: #00247C;
+      text-transform: uppercase;
+}
+.leadership {
+   background-color: #e5e5e5;
+}
+
+.person-text h4 {
+   color:  #00274c;
+}
+.person-photo {
+   width: 250px;
+   height: 270px;
+}
+.person-photo img {
+   height: 270px;
+}
+.sorting {
+   position: relative;
+   top: 1.5rem;
+}
+
+.person-links li,
+.sorting li {
+   display: inline-block;
+   margin-right: 2rem;
+}
+
+.sorting a {
+   font-weight: bold;
+   color: #00247C;
+}
+
+.sorting li.active a,
+.sorting li a:hover,
+.sorting li a:focus {
+   border-bottom: 4px solid #ffcb05;
+   text-decoration: none;
+}

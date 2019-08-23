@@ -28,8 +28,11 @@ while ( have_posts() ) {
             <h1 class="mb-12"><?php the_field( 'heading' ); ?></h1>
             <div class="content">
 				<?php the_content(); ?>
+                <?php get_template_part( 'content', 'page' ); ?>
+
             </div>
         </article>
+
     </main>
 <?php }
 ?>
