@@ -77,8 +77,8 @@ while ( have_posts() ) {
                         ?>
                         <?php
                             // passing the query array to template_part
-                            // set_query_var('args', $affiliates);
-                            // get_template_part( 'template-parts/content', 'persons' );
+                            set_query_var('args', $affiliates);
+                            get_template_part( 'template-parts/content', 'persons' );
                         ?>
                     </ul>
                 </section>
