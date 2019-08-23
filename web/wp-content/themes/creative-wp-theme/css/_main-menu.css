@@ -34,6 +34,7 @@
     width: 100%;
 }
 
+.header-menu .current-menu-ancestor a::after,
 .header-menu .current-menu-item a::after {
     background-color: #ffcb05;
     bottom: -0.5rem;

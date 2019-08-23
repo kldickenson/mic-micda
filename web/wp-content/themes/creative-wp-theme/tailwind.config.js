@@ -7,6 +7,7 @@ module.exports = {
             "light-blue-grey": "#B8C5D8",
             "michigan-blue": "#00274c",
             "michigan-maize": "#ffcb05",
+            "pale-grey": "#E5E5E5",
             "transparent": "transparent",
             "white": {
                 "default": "#ffffff",
