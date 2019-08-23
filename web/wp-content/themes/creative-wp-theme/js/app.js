@@ -15,3 +15,18 @@ const personFilter = (category) => {
 		}
 	}
 };
+
+// People carousel.
+const peopleCarousel = document.getElementById("people-carousel");
+
+if (peopleCarousel) {
+	const carousel = new Siema({
+		selector: peopleCarousel,
+		perPage: 3,
+		multipleDrag: true,
+		loop: true
+	});
+
+	document.getElementById("people-carousel-previous").addEventListener("click", () => carousel.prev(3));
+	document.getElementById("people-carousel-next").addEventListener("click", () => carousel.next(3));
+}
