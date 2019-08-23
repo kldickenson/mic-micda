@@ -1,0 +1,14 @@
+
+.trends-contact a {
+    color: #ffcb05;
+}
+
+.trends-annual ul {
+    column-count: 2;
+    column-rule: solid 1px;
+}
+
+.trends-annual li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
