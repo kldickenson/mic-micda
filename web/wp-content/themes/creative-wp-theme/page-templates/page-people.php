@@ -42,6 +42,7 @@ while ( have_posts() ) {
                             'category_name' => 'leadership',
                             'orderby' => 'menu_order',
                             'order' => 'ASC',
+                            'posts_per_page' => -1,
                             );
                         ?>
                         <?php
@@ -73,6 +74,7 @@ while ( have_posts() ) {
                             'category_name' => 'affiliates', // all affiliates, sorting handled by app.js
                             'orderby' => 'last_name',
                             'order' => 'ASC',
+                            'posts_per_page' => -1,
                             );
                         ?>
                         <?php

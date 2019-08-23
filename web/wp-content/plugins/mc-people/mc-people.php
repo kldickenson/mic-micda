@@ -89,7 +89,8 @@ class PeoplePlugin {
 
 							<?php wp_reset_postdata(); ?>
                         </div>
-                        <button class="absolute -left-2 top-33" id="people-carousel-previous" aria-label="previous slides">
+                        <button class="absolute -left-2 top-33" id="people-carousel-previous"
+                                aria-label="previous slides">
                             <img class="rotate-180" src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg"
                                  alt="">
                         </button>
@@ -120,7 +121,8 @@ class PeoplePlugin {
 			'menu_icon'        => 'dashicons-admin-users',
 			'rewrite'          => array(
 				'slug'               => 'people',
-				'delete_with_author' => false
+				'delete_with_author' => false,
+				'pages'              => false,
 			),
 			'supports'         => array(
 				'title',

@@ -4,6 +4,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
       "./**/*.php",
       "./page-templates/*.php",
       "./template-parts/*.php",
+      "../../plugins/mc-people/mc-people.php",
       "../../plugins/mc-blocks/src/**/*.js"
   ],
   // Custom extractor for some Tailwind classes.
