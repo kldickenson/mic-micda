@@ -111,6 +111,14 @@ registerBlockType("mc-blocks/section", {
             });
         };
 
+        const onRemoveBackgroundImage = () => {
+            setAttributes({sectionBackgroundImage: ""});
+        };
+
+        const onRemoveSectionImage = () => {
+            setAttributes({sectionImage: ""});
+        };
+
         const onChangeSectionBackgroundColor = newSectionBackgroundColor => {
             const matchingColor = colors.find((color) => newSectionBackgroundColor === color.color);
 
@@ -131,17 +139,31 @@ registerBlockType("mc-blocks/section", {
                 <PanelBody title={__("Section options", "mc-blocks")}>
                     <div className="components-base-control">
                         <div className="components-base-control__field">
-                            <img src={sectionBackgroundImage} alt=""/>
                             <label className="components-base-control__label">
                                 {__("Background image", "mc-blocks")}
                             </label>
+
+                            {sectionBackgroundImage &&
+                            <img src={sectionBackgroundImage} alt=""/>
+                            }
+
                             <MediaUpload
                                 onSelect={onBackgroundImageSelect}
                                 value={sectionBackgroundImage}
                                 render={({open}) => (
-                                    <Button onClick={open}>Change image</Button>
+                                    <Button
+                                        className="editor-post-featured-image__toggle"
+                                        onClick={open}>Change image
+                                    </Button>
                                 )}
                             />
+
+                            {sectionBackgroundImage &&
+                            <Button
+                                className="components-button is-link is-destructive"
+                                onClick={onRemoveBackgroundImage}>Remove background image
+                            </Button>
+                            }
                         </div>
 
                         <div className="components-base-control__field">
@@ -192,14 +214,27 @@ registerBlockType("mc-blocks/section", {
                 </h3>
 
                 <div className="section-image">
+                    {sectionImage &&
                     <img src={sectionImage} alt={sectionImageAlt}/>
+                    }
+
                     <MediaUpload
                         onSelect={onChangeSectionImage}
                         value={sectionImage}
                         render={({open}) => (
-                            <Button onClick={open}>Change section image</Button>
+                            <Button
+                                className="editor-post-featured-image__toggle"
+                                onClick={open}>Change section image
+                            </Button>
                         )}
                     />
+
+                    {sectionImage &&
+                    <Button
+                        className="components-button is-link is-destructive"
+                        onClick={onRemoveSectionImage}>Remove section image
+                    </Button>
+                    }
                 </div>
 
                 <div className="section-content">

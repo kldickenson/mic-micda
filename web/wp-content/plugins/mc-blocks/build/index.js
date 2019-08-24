@@ -581,6 +581,18 @@ registerBlockType("mc-blocks/section", {
       });
     };
 
+    var onRemoveBackgroundImage = function onRemoveBackgroundImage() {
+      setAttributes({
+        sectionBackgroundImage: ""
+      });
+    };
+
+    var onRemoveSectionImage = function onRemoveSectionImage() {
+      setAttributes({
+        sectionImage: ""
+      });
+    };
+
     var onChangeSectionBackgroundColor = function onChangeSectionBackgroundColor(newSectionBackgroundColor) {
       var matchingColor = colors.find(function (color) {
         return newSectionBackgroundColor === color.color;
@@ -607,21 +619,25 @@ registerBlockType("mc-blocks/section", {
       className: "components-base-control"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "components-base-control__field"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, __("Background image", "mc-blocks")), sectionBackgroundImage && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: sectionBackgroundImage,
       alt: ""
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
-      className: "components-base-control__label"
-    }, __("Background image", "mc-blocks")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
       onSelect: onBackgroundImageSelect,
       value: sectionBackgroundImage,
       render: function render(_ref) {
         var open = _ref.open;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          className: "editor-post-featured-image__toggle",
           onClick: open
         }, "Change image");
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }), sectionBackgroundImage && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+      className: "components-button is-link is-destructive",
+      onClick: onRemoveBackgroundImage
+    }, "Remove background image")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "components-base-control__field"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
       label: __("Text alignment", "mc-blocks"),
@@ -660,7 +676,7 @@ registerBlockType("mc-blocks/section", {
       onChange: onChangeSectionHeading
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "section-image"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+    }, sectionImage && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: sectionImage,
       alt: sectionImageAlt
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
@@ -669,10 +685,14 @@ registerBlockType("mc-blocks/section", {
       render: function render(_ref2) {
         var open = _ref2.open;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          className: "editor-post-featured-image__toggle",
           onClick: open
         }, "Change section image");
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }), sectionImage && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+      className: "components-button is-link is-destructive",
+      onClick: onRemoveSectionImage
+    }, "Remove section image")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "section-content"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       multiline: "p",
