@@ -522,6 +522,11 @@ registerBlockType("mc-blocks/section", {
     sectionBackgroundColorName: {
       type: "string",
       default: "white"
+    },
+    sectionButton: {
+      type: "string",
+      source: "html",
+      selector: ".section-button"
     }
   },
   edit: function edit(props) {
@@ -536,6 +541,7 @@ registerBlockType("mc-blocks/section", {
         sectionImageAlt = _props$attributes.sectionImageAlt,
         sectionBackgroundColor = _props$attributes.sectionBackgroundColor,
         sectionBackgroundColorName = _props$attributes.sectionBackgroundColorName,
+        sectionButton = _props$attributes.sectionButton,
         setAttributes = props.setAttributes;
 
     var onChangeSectionHeading = function onChangeSectionHeading(newSectionHeading) {
@@ -600,6 +606,12 @@ registerBlockType("mc-blocks/section", {
       setAttributes({
         sectionBackgroundColor: newSectionBackgroundColor,
         sectionBackgroundColorName: matchingColor.name
+      });
+    };
+
+    var onChangeSectionButton = function onChangeSectionButton(newSectionButton) {
+      setAttributes({
+        sectionButton: newSectionButton
       });
     };
 
@@ -706,6 +718,11 @@ registerBlockType("mc-blocks/section", {
       placeholder: __("List items", "mc-blocks"),
       onChange: onChangeSectionList,
       value: sectionList
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      className: "section-button",
+      placeholder: __("Section Button Text", "mc-blocks"),
+      onChange: onChangeSectionButton,
+      value: sectionButton
     }))];
   },
   save: function save(props) {
@@ -719,7 +736,8 @@ registerBlockType("mc-blocks/section", {
         sectionImage = _props$attributes2.sectionImage,
         sectionImageAlt = _props$attributes2.sectionImageAlt,
         sectionBackgroundColor = _props$attributes2.sectionBackgroundColor,
-        sectionBackgroundColorName = _props$attributes2.sectionBackgroundColorName;
+        sectionBackgroundColorName = _props$attributes2.sectionBackgroundColorName,
+        sectionButton = _props$attributes2.sectionButton;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "section-background full-width ".concat(sectionBackgroundColorName, " ").concat(sectionTextAlignment, " ").concat(sectionImage ? "has-image" : ""),
       style: sectionBackgroundImage ? "background: url(".concat(sectionBackgroundImage, ") no-repeat center/cover") : ""
@@ -752,6 +770,11 @@ registerBlockType("mc-blocks/section", {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "li",
       value: sectionList
+    })), sectionButton && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      className: "section-button button",
+      href: sectionLink
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: sectionButton
     })))));
   }
 });

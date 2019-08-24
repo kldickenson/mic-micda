@@ -81,9 +81,11 @@
     justify-content: normal;
 }
 
-.wp-block-mc-blocks-section .button {
+.wp-block-mc-blocks-section .section-text .button {
     border-color: #fff;
     color: #fff;
+    display: inline-block;
+    margin-top: 1rem;
 }
 
 .wp-block-mc-blocks-section.light-blue ul li::before,

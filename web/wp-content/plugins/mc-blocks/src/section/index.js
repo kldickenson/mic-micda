@@ -60,6 +60,11 @@ registerBlockType("mc-blocks/section", {
         sectionBackgroundColorName: {
             type: "string",
             default: "white"
+        },
+        sectionButton: {
+            type: "string",
+            source: "html",
+            selector: ".section-button"
         }
     },
 
@@ -75,7 +80,8 @@ registerBlockType("mc-blocks/section", {
                 sectionImage,
                 sectionImageAlt,
                 sectionBackgroundColor,
-                sectionBackgroundColorName
+                sectionBackgroundColorName,
+                sectionButton
             },
             setAttributes
         } = props;
@@ -126,6 +132,10 @@ registerBlockType("mc-blocks/section", {
                 sectionBackgroundColor: newSectionBackgroundColor,
                 sectionBackgroundColorName: matchingColor.name
             });
+        };
+
+        const onChangeSectionButton = newSectionButton => {
+            setAttributes({sectionButton: newSectionButton});
         };
 
         const colors = [
@@ -253,6 +263,12 @@ registerBlockType("mc-blocks/section", {
                     onChange={onChangeSectionList}
                     value={sectionList}
                 />
+                <RichText
+                    className="section-button"
+                    placeholder={__("Section Button Text", "mc-blocks")}
+                    onChange={onChangeSectionButton}
+                    value={sectionButton}
+                />
             </div>
         ];
     },
@@ -268,7 +284,8 @@ registerBlockType("mc-blocks/section", {
                 sectionImage,
                 sectionImageAlt,
                 sectionBackgroundColor,
-                sectionBackgroundColorName
+                sectionBackgroundColorName,
+                sectionButton
             }
         } = props;
 
@@ -315,6 +332,14 @@ registerBlockType("mc-blocks/section", {
                                 value={sectionList}
                             />
                         </ul>
+                        }
+
+                        {sectionButton &&
+                        <a className="section-button button" href={sectionLink}>
+                            <RichText.Content
+                                value={sectionButton}
+                            />
+                        </a>
                         }
                     </div>
                 </div>
