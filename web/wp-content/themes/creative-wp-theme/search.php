@@ -1,9 +1,9 @@
 <?php get_header(); ?>
-    <main id="main" role="main">
+    <main id="main" role="main" class="contained my-20">
 
 		<?php if ( have_posts() ) : ?>
 
-            <div>
+            <div class="mb-8">
                 <h1>
 					<?php _e( 'Search results for:' ); ?>
                 </h1>
@@ -14,11 +14,13 @@
 			while ( have_posts() ) :
 				the_post(); ?>
 
+                <div class="mb-4 pb-4 border-b">
                 <a href="<?php echo get_permalink(); ?>">
                     <h2><?php echo get_the_title(); ?></h2>
                 </a>
 
                 <p><?php echo get_the_excerpt(); ?></p>
+                </div>
 
 			<?php endwhile; ?>
 
