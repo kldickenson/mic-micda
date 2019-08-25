@@ -4,11 +4,11 @@
 while ( have_posts() ) {
 	the_post(); ?>
 
-    <img class="w-full max-h-30 object-cover" src="<?php echo get_theme_mod( 'creative_hero_image' ); ?>" alt="">
+    <img class="w-full max-h-30 object-cover min-h-16" src="<?php echo get_theme_mod( 'creative_hero_image' ); ?>" alt="">
 
     <main role="main" id="main" class="contained">
 	    <section class="mb-16 mt-10 text-center">
-		    <h1 class="text-5xl uppercase leading-none text-michigan-blue mb-12">
+		    <h1 class="md:text-5xl uppercase leading-none text-michigan-blue mb-12">
 			    <span class="block"><?php echo get_theme_mod('creative_heading_1'); ?></span>
 			    <span class="block font-bold"><?php echo get_theme_mod('creative_heading_2'); ?></span>
 		    </h1>

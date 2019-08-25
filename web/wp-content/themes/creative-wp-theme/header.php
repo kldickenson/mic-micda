@@ -24,11 +24,11 @@
 
 <header class="bg-michigan-blue py-8">
     <div class="contained flex items-center">
-        <a href="/">
+        <a class="mr-16" href="/">
             <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="site logo">
         </a>
 
-        <div class="ml-auto flex flex-col items-end">
+        <div class="hidden lg:flex ml-auto flex-col items-end">
             <div class="mb-4">
 	            <?php get_search_form(); ?>
             </div>

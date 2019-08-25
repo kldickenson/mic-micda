@@ -81,6 +81,11 @@
     justify-content: normal;
 }
 
+.wp-block-mc-blocks-section.has-image .section-text {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
 .wp-block-mc-blocks-section .section-text .button {
     border-color: #fff;
     color: #fff;
@@ -99,5 +104,19 @@
 
 .wp-block-mc-blocks-section ul li {
     margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .wp-block-mc-blocks-section .section-wrapper {
+        display: block;
+    }
+
+    .wp-block-mc-blocks-section .section-image {
+        width: 100%;
+    }
+
+    .wp-block-mc-blocks-section .section-text {
+        width: 100%;
+    }
 }
 /* purgecss end ignore */
