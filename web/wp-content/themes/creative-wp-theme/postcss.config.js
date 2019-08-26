@@ -5,7 +5,8 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
       "./page-templates/*.php",
       "./template-parts/*.php",
       "../../plugins/mc-people/mc-people.php",
-      "../../plugins/mc-blocks/src/**/*.js"
+      "../../plugins/mc-blocks/src/**/*.js",
+      "./js/app.js"
   ],
   // Custom extractor for some Tailwind classes.
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
