@@ -2,7 +2,7 @@ import React from "react";
 
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {RichText, InnerBlocks, InspectorControls, MediaUpload} = wp.editor;
+const {RichText, InnerBlocks, InspectorControls, MediaUpload, ColorPalette} = wp.editor;
 const {PanelBody, Button} = wp.components;
 
 registerBlockType("mc-blocks/section-inner", {
@@ -26,6 +26,9 @@ registerBlockType("mc-blocks/section-inner", {
             source: "attribute",
             selector: ".section-background",
             attribute: "data-src"
+        },
+        sectionBackgroundColor: {
+            type: "string"
         }
     },
 
@@ -43,7 +46,7 @@ registerBlockType("mc-blocks/section-inner", {
 
     edit: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage},
+            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionBackgroundColor},
             setAttributes
         } = props;
 
@@ -59,17 +62,60 @@ registerBlockType("mc-blocks/section-inner", {
             setAttributes({sectionBackgroundImage: newImage.sizes.full.url});
         };
 
+        const onChangeSectionBackgroundColor = newSectionBackgroundColor => {
+            setAttributes({sectionBackgroundColor: newSectionBackgroundColor});
+        };
+
+        const onRemoveBackgroundImage = () => {
+            setAttributes({sectionBackgroundImage: ""});
+        };
+
         return [
             <InspectorControls>
-                <PanelBody title={__("Background image", "mc-blocks")}>
-                    <img src={sectionBackgroundImage} alt=""/>
-                    <MediaUpload
-                        onSelect={onImageSelect}
-                        value={sectionBackgroundImage}
-                        render={({open}) => (
-                            <Button onClick={open}>Change image</Button>
-                        )}
-                    />
+                <PanelBody title={__("Section options", "mc-blocks")}>
+                    <div className="components-base-control">
+                        <div className="components-base-control__field">
+                            <label className="components-base-control__label">
+                                {__("Background image", "mc-blocks")}
+                            </label>
+
+                            {sectionBackgroundImage &&
+                            <img src={sectionBackgroundImage} alt=""/>
+                            }
+
+                            <MediaUpload
+                                onSelect={onImageSelect}
+                                value={sectionBackgroundImage}
+                                render={({open}) => (
+                                    <Button
+                                        className="editor-post-featured-image__toggle"
+                                        onClick={open}>Change image
+                                    </Button>
+                                )}
+                            />
+
+                            {sectionBackgroundImage &&
+                            <Button
+                                className="components-button is-link is-destructive"
+                                onClick={onRemoveBackgroundImage}>Remove background image
+                            </Button>
+                            }
+                        </div>
+
+                        <div className="components-base-control__field">
+                            <label className="components-base-control__label">
+                                {__("Background color", "mc-blocks")}
+                            </label>
+                            <ColorPalette
+                                value={sectionBackgroundColor}
+                                onChange={onChangeSectionBackgroundColor}
+                                colors={[
+                                    {name: "white", color: "#fff"},
+                                    {name: "gray", color: "#e5e5e5"}
+                                ]}
+                            />
+                        </div>
+                    </div>
                 </PanelBody>
             </InspectorControls>,
             <div>
@@ -93,19 +139,19 @@ registerBlockType("mc-blocks/section-inner", {
                     Found the fix here: https://github.com/WordPress/gutenberg/issues/9897
                  */}
                 {typeof props.insertBlocksAfter !== "undefined" ?
-                    <InnerBlocks allowedBlocks={["core/table", "mc-blocks/card", "core/paragraph"]}/>:<div />
+                    <InnerBlocks allowedBlocks={["core/table", "mc-blocks/card", "core/paragraph"]}/> : <div/>
                 }
             </div>
         ];
     },
     save: props => {
         const {
-            attributes: {sectionHeading, sectionContent, sectionBackgroundImage}
+            attributes: {sectionHeading, sectionContent, sectionBackgroundImage, sectionBackgroundColor}
         } = props;
 
         return (
             <div className="py-16 section-background full-width" data-src={sectionBackgroundImage}
-                 style={sectionBackgroundImage ? `background: url(${sectionBackgroundImage}) no-repeat center/cover` : ""}>
+                 style={sectionBackgroundImage ? `background: url(${sectionBackgroundImage}) no-repeat center/cover` : sectionBackgroundColor && `background-color: ${sectionBackgroundColor};`}>
 
                 <div className="contained">
                     <h2 className="section-heading text-michigan-blue">
