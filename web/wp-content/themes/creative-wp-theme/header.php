@@ -31,7 +31,7 @@
         </a>
 
         <div id="header-nav"
-             class="overflow-y-scroll translate-x--16 transition lg:flex w-64 bg-michigan-blue p-4 lg:p-0 lg:w-auto fixed h-full top-0 left-0 z-20 lg:static ml-auto flex-col items-end">
+             class="lg:overflow-y-hidden overflow-y-scroll translate-x--16 transition lg:flex w-64 bg-michigan-blue p-4 lg:p-0 lg:w-auto fixed h-full top-0 left-0 z-20 lg:static ml-auto flex-col items-end">
             <a id="mobile-logo" class="lg:hidden mr-8" href="/">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="site logo">
             </a>
