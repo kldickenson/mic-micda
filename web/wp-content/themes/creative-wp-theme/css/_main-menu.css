@@ -44,4 +44,27 @@
     position: absolute;
     width: 100%;
 }
+
+@media all and (max-width: 1024px) {
+    .header-menu .menu-item a {
+        display: block;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+    }
+
+    .header-menu .menu-item {
+        margin-right: 0;
+    }
+
+    #header-nav {
+        transform: translateX(-16rem);
+        transition: transform 0.25s ease-in;
+    }
+
+    #header-nav.open {
+        transform: translateX(0);
+        transition: transform 0.25s ease-out;
+    }
+}
 /* purgecss end ignore */

@@ -1,7 +1,10 @@
 module.exports = {
     theme: {
         colors: {
-            "black": "#000000",
+            "black": {
+                "default": "#000000",
+                "50": "rgba(0, 0, 0, 0.5)"
+            },
             "cobalt": "#024794",
             "denim": "#485D82",
             "light-blue-grey": "#B8C5D8",
