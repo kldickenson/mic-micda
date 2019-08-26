@@ -132,3 +132,4 @@ add_action( 'after_setup_theme', 'creative_theme_features' );
 add_action( 'widgets_init', 'creative_widgets_init' );
 add_action( 'wp_enqueue_scripts', 'creative_theme_assets' );
 add_action( 'customize_register', 'creative_customize_register' );
+

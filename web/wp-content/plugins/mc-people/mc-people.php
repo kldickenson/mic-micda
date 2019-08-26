@@ -24,6 +24,7 @@ class PeoplePlugin {
 
 	function register() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		add_action( 'init', array( $this, 'create_roll_taxonomy' ) );
 		add_shortcode( 'people-carousel', array( $this, 'mc_people_carousel' ) );
 	}
 
@@ -128,10 +129,9 @@ class PeoplePlugin {
 				'title',
 				'editor',
 				'page-attributes',
-				'custom-fields',
-				'categories'
+				'custom-fields'
 			),
-			'taxonomies'       => array( 'category' ),
+			'taxonomies'       => array( 'rolls' ),
 			'show_ui'          => true,
 			'show_in_menu'     => true,
 			'show_in_nav_menu' => true,
@@ -139,6 +139,34 @@ class PeoplePlugin {
 			'show_in_rest'     => true,
 		) );
 	}
+
+	function create_roll_taxonomy() {
+    // Add new taxonomy, make it hierarchical (like categories)
+    $labels = array(
+        'name'              => _x( 'Rolls', 'Rolls', 'people' ),
+        'singular_name'     => _x( 'Roll', 'Roll', 'people' ),
+        'search_items'      => __( 'Search Rolls', 'people' ),
+		  'all_items'         => __( 'All Rolls', 'people' ),
+			'parent_item'       => __( 'Parent Roll', 'people' ),
+        'parent_item_colon' => __( 'Parent Roll:', 'people' ),
+        'edit_item'         => __( 'Edit Roll', 'people' ),
+        'update_item'       => __( 'Update Roll', 'people' ),
+        'add_new_item'      => __( 'Add New Roll', 'people' ),
+        'new_item_name'     => __( 'New Role', 'people' ),
+        'menu_name'         => __( 'Rolls', 'people' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'roll' ),
+    );
+
+    register_taxonomy( 'rolls', array( 'people' ), $args );
+}
 
 	function enqueue() {
 		wp_enqueue_style( 'peoplestyle', plugins_url( '/assets/mc-people.css', __FILE__ ) );
