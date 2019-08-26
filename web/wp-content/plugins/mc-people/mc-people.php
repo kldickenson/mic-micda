@@ -72,7 +72,7 @@ class PeoplePlugin {
                                 <div class="person p-4">
 									<?php if ( get_field( 'photo', $post->ID ) ) : ?>
                                         <img src="<?php echo get_field( 'photo', $post->ID ); ?>"
-                                             class="w-full h-56 object-cover object-top mb-4"
+                                             class="w-full h-64 lg:h-56 object-cover object-center mb-4"
                                              alt="<?php echo $post->post_title; ?>">
 									<?php endif; ?>
 
