@@ -2,7 +2,7 @@
 .wp-block-mc-blocks-section-inner .wp-block-mc-blocks-card {
     flex-basis: 33%;
     flex-grow: 1;
-    margin-right: 1rem;
+    margin: 0.5rem;
 }
 
 .wp-block-mc-blocks-section-inner .wp-block-mc-blocks-card p {
@@ -14,15 +14,58 @@
     max-width: 275px;
 }
 
+.wp-block-mc-blocks-section-inner .inner-blocks {
+    margin: -0.5rem;
+}
+
 .wp-block-mc-blocks-section-inner.is-style-stacked .inner-blocks {
     flex-direction: column;
     flex-wrap: wrap;
-    margin: -0.5rem;
     max-height: 20rem;
 }
 
 .wp-block-mc-blocks-section-inner.is-style-stacked .wp-block-mc-blocks-card {
-    margin: 0.5rem;
-    width: 50%;
+    width: 48%;
 }
+
+.wp-block-mc-blocks-section-inner .inner-blocks {
+    overflow-x: scroll;
+}
+
+@media all and (max-width: 1280px) {
+    .wp-block-mc-blocks-section-inner.is-style-stacked .inner-blocks {
+        flex-direction: row;
+        max-height: none;
+    }
+    .wp-block-mc-blocks-section-inner .inner-blocks {
+        flex-wrap: wrap;
+    }
+}
+
+@media all and (max-width: 1024px) {
+    .wp-block-mc-blocks-section-inner > .contained > .flex {
+        display: block;
+    }
+
+    .wp-block-mc-blocks-section-inner .section-content {
+        max-width: none;
+        width: auto;
+    }
+
+    .wp-block-mc-blocks-section-inner .inner-blocks {
+        width: auto;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .wp-block-mc-blocks-section-inner.is-style-stacked .inner-blocks,
+    .wp-block-mc-blocks-section-inner .inner-blocks {
+        flex-direction: column;
+    }
+
+    .wp-block-mc-blocks-section-inner.is-style-stacked .wp-block-mc-blocks-card {
+        width: auto;
+    }
+}
+
 /* purgecss end ignore */

@@ -10,10 +10,10 @@ while ( have_posts() ) {
 
 	<?php if ( has_post_thumbnail() ): ?>
         <div class="relative">
-			<?php echo get_the_post_thumbnail( $post->ID, 'full', array( 'class' => 'w-full max-h-20 object-cover object-top' ) ); ?>
+			<?php echo get_the_post_thumbnail( $post->ID, 'full', array( 'class' => 'w-full max-h-20 object-cover object-top min-h-16' ) ); ?>
             <div class="absolute w-full bottom-2">
                 <div class="contained">
-                    <div class="bg-michigan-maize text-3xl font-bold inline py-2 px-4 leading-none uppercase"><?php the_title(); ?></div>
+                    <div class="bg-michigan-maize text-2xl md:text-3xl font-bold inline py-2 px-4 leading-none uppercase"><?php the_title(); ?></div>
                 </div>
             </div>
         </div>
@@ -28,37 +28,36 @@ while ( have_posts() ) {
     <main role="main" id="main" class="">
 
         <article>
-            <h1 class="container mx-auto mb-12"><?php the_field( 'heading' ); ?></h1>
-            <div class="container mx-auto">
-                <?php the_content(); ?>
+            <h1 class="container lg:mx-auto px-4 mb-12"><?php the_field( 'heading' ); ?></h1>
+            <div class="container lg:mx-auto px-4">
+				<?php the_content(); ?>
             </div>
-           <div class="leadership w-screen pb-4">
-                <section id="leadership" class="container mx-auto pt-16 px-32">
-                    <h3 class="text-xl font-bold mb-8">Leadership</h3>
+            <div class="leadership pb-4">
+                <section id="leadership" class="mx-auto pt-16 max-w-5xl px-4">
+                    <h3 class="text-xl font-bold mb-8"><?php echo __('Leadership', 'creative-wp-theme'); ?></h3>
                     <ul>
-                        <?php
-                            $leadership = array(
-                            'post_type' => 'people', // enter custom post type
-                            'category_name' => 'leadership',
-                            'orderby' => 'menu_order',
-                            'order' => 'ASC',
-                            'posts_per_page' => -1,
-                            );
-                        ?>
-                        <?php
-                            // passing the query array to template_part
-                            set_query_var('args', $leadership);
-                            get_template_part( 'template-parts/content', 'persons' );
-                        ?>
+						<?php
+						$leadership = array(
+							'post_type'      => 'people',
+							'category_name'  => 'leadership',
+							'orderby'        => 'menu_order',
+							'order'          => 'ASC',
+							'posts_per_page' => - 1,
+						);
+						?>
+						<?php
+						set_query_var( 'args', $leadership );
+						get_template_part( 'template-parts/content', 'persons' );
+						?>
 
                     </ul>
                 </section>
             </div>
             <div class="w-screen affiliates pb-4">
-                <section id="affiliates"  class="container mx-auto pt-16 pb-0 px-32">
-                    <h3 class="text-xl font-bold mb-12 inline-block w-1/4">Affiliates</h3>
-                    <div class="sorting pt-2 inline-block">
-                        <p class="">Browse:</p>
+                <section id="affiliates" class="container mx-auto pt-16 pb-0 max-w-5xl px-4">
+                    <h3 class="text-xl font-bold mb-4 md:mb-12 inline-block w-1/4"><?php echo __( 'Affiliates', 'creative-wp-theme' ); ?></h3>
+                    <div class="sorting pt-2 md:inline-block md:relative top-1-5 mb-8 md:mb-0">
+                        <p class=""><?php echo __( 'Browse', 'creative-wp-theme' ); ?>:</p>
                         <ul>
                             <li><a class="text-lg" href="#a-_e" onClick="personFilter('A-E')">A-E</a></li>
                             <li><a class="text-lg" href="#f_j" onClick="personFilter('F-J')">F-J</a></li>
@@ -68,21 +67,20 @@ while ( have_posts() ) {
                         </ul>
                     </div>
                     <ul>
-                        <?php
-                            $affiliates = array(
-                            'post_type' => 'people', // enter custom post type
-                            'category_name' => 'affiliates', // all affiliates, sorting handled by app.js
-                            'orderby' => 'meta_value',
-                            'meta_key' => 'last_name',
-                            'order' => 'ASC',
-                            'posts_per_page' => -1,
-                            );
-                        ?>
-                        <?php
-                            // passing the query array to template_part
-                            set_query_var('args', $affiliates);
-                            get_template_part( 'template-parts/content', 'persons' );
-                        ?>
+						<?php
+						$affiliates = array(
+							'post_type'      => 'people',
+							'category_name'  => 'affiliates',
+							'orderby'        => 'meta_value',
+							'meta_key'       => 'last_name',
+							'order'          => 'ASC',
+							'posts_per_page' => - 1,
+						);
+						?>
+						<?php
+						set_query_var( 'args', $affiliates );
+						get_template_part( 'template-parts/content', 'persons' );
+						?>
                     </ul>
                 </section>
             </div>

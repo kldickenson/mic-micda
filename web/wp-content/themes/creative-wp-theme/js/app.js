@@ -22,7 +22,11 @@ const peopleCarousel = document.getElementById("people-carousel");
 if (peopleCarousel) {
 	const carousel = new Siema({
 		selector: peopleCarousel,
-		perPage: 3,
+		perPage: {
+			640: 3,
+			480: 2,
+			320: 1
+		},
 		multipleDrag: true,
 		loop: true
 	});

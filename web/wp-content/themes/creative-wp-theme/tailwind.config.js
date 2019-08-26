@@ -16,7 +16,10 @@ module.exports = {
         },
         extend: {
             inset: {
+                "-1": "-1rem",
                 "-2": "-2rem",
+                "1": "1rem",
+                "1-5": "1.5rem",
                 "2": "0.5rem",
                 "33": "33%"
             },

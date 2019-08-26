@@ -52,8 +52,8 @@ class PeoplePlugin {
 			ob_start(); ?>
 
             <section class="py-24">
-                <div class="flex justify-between">
-                    <div class="w-5/12">
+                <div class="lg:flex justify-between">
+                    <div class="lg:w-5/12 mb-12 lg:mb-0">
                         <h2 class="text-4xl text-michigan-blue"><?php echo __( 'People', 'creative-wp-theme' ) ?></h2>
                         <p class="font-bold text-lg leading-tight"><?php echo $content; ?></p>
 
@@ -66,8 +66,8 @@ class PeoplePlugin {
                         </a>
                     </div>
 
-                    <div class="w-7/12 -m-4 relative">
-                        <div id="people-carousel">
+                    <div class="lg:w-7/12 -m-4 relative">
+                        <div id="people-carousel" class="mx-8">
 							<?php foreach ( $posts as $post ) : setup_postdata( $post ) ?>
                                 <div class="person p-4">
 									<?php if ( get_field( 'photo', $post->ID ) ) : ?>
@@ -89,12 +89,12 @@ class PeoplePlugin {
 
 							<?php wp_reset_postdata(); ?>
                         </div>
-                        <button class="absolute -left-2 top-33" id="people-carousel-previous"
+                        <button class="absolute left-1 top-33" id="people-carousel-previous"
                                 aria-label="previous slides">
                             <img class="rotate-180" src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg"
                                  alt="">
                         </button>
-                        <button class="absolute -right-2 top-33" id="people-carousel-next" aria-label="next slides">
+                        <button class="absolute right-1 top-33" id="people-carousel-next" aria-label="next slides">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" alt="">
                         </button>
                     </div>

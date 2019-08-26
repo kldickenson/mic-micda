@@ -118,5 +118,9 @@
     .wp-block-mc-blocks-section .section-text {
         width: 100%;
     }
+    .wp-block-mc-blocks-section.has-image .section-text {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 /* purgecss end ignore */

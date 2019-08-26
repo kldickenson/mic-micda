@@ -11,17 +11,17 @@
 
             <div class="person-photo w-full md:w-1/4 md:pr-8">
                <?php if( get_field('photo') ) { ?>
-                  <img class="object-cover w-full" src="<?php the_field('photo'); ?>" alt="<?php the_title(); ?>" >
+                  <img class="object-cover w-full pb-4 md:pb-0" src="<?php the_field('photo'); ?>" alt="<?php the_title(); ?>" >
                <?php } else { ?>
-                  <img class="person-photo" src="http://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff" alt="" >
+                  <img class="person-photo pb-4 md:pb-0" src="http://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff" alt="" >
                <?php } ?>
                </div>
                <div class="person-text w-full md:w-3/4">
 
                <?php if( get_field('micda_title') ) { ?>
-                  <h4 class="font-xl font-bold text-umblue"><?php the_title(); ?>, <?php the_field('micda_title'); ?></h4>
+                  <h4 class="text-lg font-bold text-umblue"><?php the_title(); ?>, <?php the_field('micda_title'); ?></h4>
                <?php } else { ?>
-                   <h4 class="font-xl font-bold text-umblue"><?php the_title(); ?></h4>
+                   <h4 class="text-lg font-bold text-umblue"><?php the_title(); ?></h4>
                <?php } ?>
 
                   <h5 class="font-normal"><?php the_field('positions'); ?></h5>

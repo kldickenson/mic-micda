@@ -10,4 +10,11 @@
 .wp-block-mc-blocks-card.is-style-horizontal > p {
     flex-basis: 33%;
 }
+
+@media all and (max-width: 640px) {
+    .wp-block-mc-blocks-card.is-style-horizontal {
+        flex-direction: column;
+    }
+}
+
 /* purgecss end ignore */
