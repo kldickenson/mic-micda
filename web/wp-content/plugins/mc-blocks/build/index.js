@@ -408,7 +408,7 @@ registerBlockType("mc-blocks/section-inner", {
       onChange: onChangeSectionContent,
       value: sectionContent
     })), typeof props.insertBlocksAfter !== "undefined" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
-      allowedBlocks: ["core/table", "mc-blocks/card"]
+      allowedBlocks: ["core/table", "mc-blocks/card", "core/paragraph"]
     }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null))];
   },
   save: function save(props) {

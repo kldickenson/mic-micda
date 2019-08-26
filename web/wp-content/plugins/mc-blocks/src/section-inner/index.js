@@ -93,7 +93,7 @@ registerBlockType("mc-blocks/section-inner", {
                     Found the fix here: https://github.com/WordPress/gutenberg/issues/9897
                  */}
                 {typeof props.insertBlocksAfter !== "undefined" ?
-                    <InnerBlocks allowedBlocks={["core/table", "mc-blocks/card"]}/>:<div />
+                    <InnerBlocks allowedBlocks={["core/table", "mc-blocks/card", "core/paragraph"]}/>:<div />
                 }
             </div>
         ];
