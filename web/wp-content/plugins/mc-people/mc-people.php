@@ -55,7 +55,7 @@ class PeoplePlugin {
             <section class="py-24">
                 <div class="lg:flex justify-between">
                     <div class="lg:w-5/12 mb-12 lg:mb-0">
-                        <h2 class="text-4xl text-michigan-blue"><?php echo __( 'People', 'creative-wp-theme' ) ?></h2>
+                        <h2 class="text-4xl text-michigan-blue"><a href="/people"><?php echo __( 'People', 'creative-wp-theme' ) ?></a></h2>
                         <p class="font-bold text-lg leading-tight"><?php echo $content; ?></p>
 
                         <a href="/people" class="block mb-8 font-bold text-lg">

@@ -28,6 +28,14 @@
     padding: 1rem 2rem;
     text-align: center;
     text-transform: uppercase;
+    transition: background-color 0.15s ease;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #EDEBEB;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
 }
 
 .full-width {
