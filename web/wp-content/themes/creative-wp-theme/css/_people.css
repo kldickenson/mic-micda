@@ -2,7 +2,8 @@
 /* Content specific to /people/ */
 
 /* class specific for affiliates sorting */
-.page-template-page-people .hide {
+.page-template-page-people .hide,
+.page-template-page-trends .hide {
     display: none;
 }
 
@@ -11,7 +12,8 @@
 
 }
 
-.page-template-page-people h3 {
+.page-template-page-people h3,
+.page-template-page-trends h3 {
     color: #00247C;
     text-transform: uppercase;
 }
