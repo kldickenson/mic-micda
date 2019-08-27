@@ -24,7 +24,7 @@ class PeoplePlugin {
 
 	function register() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-		add_action( 'init', array( $this, 'create_roll_taxonomy' ) );
+		add_action( 'init', array( $this, 'create_role_taxonomy' ) );
 		add_shortcode( 'people-carousel', array( $this, 'mc_people_carousel' ) );
 	}
 
@@ -131,7 +131,7 @@ class PeoplePlugin {
 				'page-attributes',
 				'custom-fields'
 			),
-			'taxonomies'       => array( 'rolls' ),
+			'taxonomies'       => array( 'roles' ),
 			'show_ui'          => true,
 			'show_in_menu'     => true,
 			'show_in_nav_menu' => true,
@@ -140,20 +140,20 @@ class PeoplePlugin {
 		) );
 	}
 
-	function create_roll_taxonomy() {
+	function create_role_taxonomy() {
     // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
-        'name'              => _x( 'Rolls', 'Rolls', 'people' ),
-        'singular_name'     => _x( 'Roll', 'Roll', 'people' ),
-        'search_items'      => __( 'Search Rolls', 'people' ),
-		  'all_items'         => __( 'All Rolls', 'people' ),
-			'parent_item'       => __( 'Parent Roll', 'people' ),
-        'parent_item_colon' => __( 'Parent Roll:', 'people' ),
-        'edit_item'         => __( 'Edit Roll', 'people' ),
-        'update_item'       => __( 'Update Roll', 'people' ),
-        'add_new_item'      => __( 'Add New Roll', 'people' ),
-        'new_item_name'     => __( 'New Role', 'people' ),
-        'menu_name'         => __( 'Rolls', 'people' ),
+        'name'              => _x( 'Roles', 'Roles', 'people' ),
+        'singular_name'     => _x( 'role', 'role', 'people' ),
+        'search_items'      => __( 'Search roles', 'people' ),
+		  'all_items'         => __( 'All roles', 'people' ),
+			'parent_item'       => __( 'Parent role', 'people' ),
+        'parent_item_colon' => __( 'Parent role:', 'people' ),
+        'edit_item'         => __( 'Edit role', 'people' ),
+        'update_item'       => __( 'Update role', 'people' ),
+        'add_new_item'      => __( 'Add New role', 'people' ),
+        'new_item_name'     => __( 'New role', 'people' ),
+        'menu_name'         => __( 'roles', 'people' ),
     );
 
     $args = array(
@@ -163,10 +163,10 @@ class PeoplePlugin {
 		  'show_admin_column' => true,
 		  'show_in_rest'			=> true,
         'query_var'         => true,
-        'rewrite'           => array( 'slug' => 'roll' ),
+        'rewrite'           => array( 'slug' => 'role' ),
     );
 
-    register_taxonomy( 'rolls', array( 'people' ), $args );
+    register_taxonomy( 'roles', array( 'people' ), $args );
 }
 
 	function enqueue() {
