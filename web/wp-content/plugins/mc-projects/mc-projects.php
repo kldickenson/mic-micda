@@ -41,7 +41,7 @@ class ProjectsPlugin {
 
 	function custom_post_type() {
 		register_post_type( 'projects', array(
-			'public'           => 'true',
+			'public'           => true,
 			'label'            => 'projects',
 			'labels'           => array(
 				'name'          => 'Projects',
@@ -76,8 +76,8 @@ class ProjectsPlugin {
 	function create_year_taxonomy() {
     // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
-        'name'              => _x( 'Years', 'Years', 'projects' ),
-        'singular_name'     => _x( 'Year', 'Year', 'projects' ),
+        'name'              => __( 'Years', 'Years', 'projects' ),
+        'singular_name'     => __( 'Year', 'Year', 'projects' ),
         'search_items'      => __( 'Search Years', 'projects' ),
         'all_items'         => __( 'All Years', 'projects' ),
         'edit_item'         => __( 'Edit Year', 'projects' ),
@@ -88,11 +88,13 @@ class ProjectsPlugin {
     );
 
     $args = array(
-        'hierarchical'      => false,
+		  'public'				=> true,
+        'hierarchical'      => true,
         'labels'            => $labels,
-        'show_ui'           => true,
+		  'show_ui'           => true,
         'show_admin_column' => true,
-        'query_var'         => true,
+ 		  'show_in_rest'		=> true,
+       'query_var'         => true,
         'rewrite'           => array( 'slug' => 'year' ),
     );
 

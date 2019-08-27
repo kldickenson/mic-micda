@@ -3,11 +3,11 @@
     "title": "Project",
     "fields": [
         {
-            "key": "field_5d643ba18fdfb",
-            "label": "Year Awarded",
-            "name": "year_awarded",
-            "type": "date_picker",
-            "instructions": "",
+            "key": "field_5d65332e9124c",
+            "label": "Leader's Profile",
+            "name": "lead",
+            "type": "relationship",
+            "instructions": "Choose the Project Lead",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,9 +15,97 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "Y",
-            "return_format": "Y",
-            "first_day": 1
+            "post_type": [
+                "people"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": 1,
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5d6534ed9124d",
+            "label": "Co-Investigators",
+            "name": "investigators",
+            "type": "repeater",
+            "instructions": "Co-Investigator's Name",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 3,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5d654ddfee6a0",
+                    "label": "Full name of Co-Investigator",
+                    "name": "full_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5d6535a2c821b",
+            "label": "Outcomes",
+            "name": "outcomes",
+            "type": "repeater",
+            "instructions": "Publication, presentation or grant",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5d654d53ee69f",
+            "min": 1,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5d654d53ee69f",
+                    "label": "bibliography",
+                    "name": "bibliography",
+                    "type": "textarea",
+                    "instructions": "Input full bibliography of the outcome",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br"
+                }
+            ]
         }
     ],
     "location": [
@@ -45,5 +133,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1566850011
+    "modified": 1566927547
 }
