@@ -32,6 +32,7 @@
 }
 
 .person-photo img {
+    width: 250px;
     height: 270px;
 }
 
