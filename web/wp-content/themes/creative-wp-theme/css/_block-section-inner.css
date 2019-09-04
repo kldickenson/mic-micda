@@ -43,6 +43,9 @@
     .wp-block-mc-blocks-section-inner .inner-blocks {
         flex-wrap: wrap;
     }
+    .wp-block-mc-blocks-section-inner.is-style-stacked .wp-block-mc-blocks-card {
+        flex-basis: 48%;
+    }
 }
 
 @media all and (max-width: 1024px) {
