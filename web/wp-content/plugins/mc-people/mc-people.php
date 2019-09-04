@@ -43,6 +43,7 @@ class PeoplePlugin {
 	function mc_people_carousel( $atts, $content = null ) {
 		$args = array(
 			'post_type'      => 'people',
+			'category_name'  => 'affiliates',
 			'orderby'        => 'rand',
 			'posts_per_page' => 9,
 		);
@@ -55,7 +56,8 @@ class PeoplePlugin {
             <section class="py-24">
                 <div class="lg:flex justify-between">
                     <div class="lg:w-5/12 mb-12 lg:mb-0">
-                        <h2 class="text-4xl text-michigan-blue"><a href="/people"><?php echo __( 'People', 'creative-wp-theme' ) ?></a></h2>
+                        <h2 class="text-4xl text-michigan-blue"><a
+                                    href="/people"><?php echo __( 'People', 'creative-wp-theme' ) ?></a></h2>
                         <p class="font-bold text-lg leading-tight"><?php echo $content; ?></p>
 
                         <a href="/people" class="block mb-8 font-bold text-lg">
@@ -141,33 +143,33 @@ class PeoplePlugin {
 	}
 
 	function create_role_taxonomy() {
-    // Add new taxonomy, make it hierarchical (like categories)
-    $labels = array(
-        'name'              => _x( 'Roles', 'Roles', 'people' ),
-        'singular_name'     => _x( 'role', 'role', 'people' ),
-        'search_items'      => __( 'Search roles', 'people' ),
-		  'all_items'         => __( 'All roles', 'people' ),
+		// Add new taxonomy, make it hierarchical (like categories)
+		$labels = array(
+			'name'              => _x( 'Roles', 'Roles', 'people' ),
+			'singular_name'     => _x( 'role', 'role', 'people' ),
+			'search_items'      => __( 'Search roles', 'people' ),
+			'all_items'         => __( 'All roles', 'people' ),
 			'parent_item'       => __( 'Parent role', 'people' ),
-        'parent_item_colon' => __( 'Parent role:', 'people' ),
-        'edit_item'         => __( 'Edit role', 'people' ),
-        'update_item'       => __( 'Update role', 'people' ),
-        'add_new_item'      => __( 'Add New role', 'people' ),
-        'new_item_name'     => __( 'New role', 'people' ),
-        'menu_name'         => __( 'roles', 'people' ),
-    );
+			'parent_item_colon' => __( 'Parent role:', 'people' ),
+			'edit_item'         => __( 'Edit role', 'people' ),
+			'update_item'       => __( 'Update role', 'people' ),
+			'add_new_item'      => __( 'Add New role', 'people' ),
+			'new_item_name'     => __( 'New role', 'people' ),
+			'menu_name'         => __( 'roles', 'people' ),
+		);
 
-    $args = array(
-        'hierarchical'      => true,
-        'labels'            => $labels,
-        'show_ui'           => true,
-		  'show_admin_column' => true,
-		  'show_in_rest'			=> true,
-        'query_var'         => true,
-        'rewrite'           => array( 'slug' => 'role' ),
-    );
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_rest'      => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'role' ),
+		);
 
-    register_taxonomy( 'roles', array( 'people' ), $args );
-}
+		register_taxonomy( 'roles', array( 'people' ), $args );
+	}
 
 	function enqueue() {
 		wp_enqueue_style( 'peoplestyle', plugins_url( '/assets/mc-people.css', __FILE__ ) );
