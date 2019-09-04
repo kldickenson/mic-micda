@@ -61,7 +61,7 @@ class PeoplePlugin {
                         <p class="font-bold text-lg leading-tight"><?php echo $content; ?></p>
 
                         <a href="/micda-people" class="block mb-8 font-bold text-lg">
-							<?php echo __( 'Search affiliates', 'creative-wp-theme' ); ?>.
+							<?php echo __( 'See All Affiliates', 'creative-wp-theme' ); ?>.
                         </a>
 
                         <a href="/micda-people/become-an-affiliate/" class="button inline-block">
