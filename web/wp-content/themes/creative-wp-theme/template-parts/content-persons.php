@@ -49,8 +49,14 @@ if ( $loop->have_posts() ):
                         <h4 class="text-lg font-bold text-umblue"><?php the_title(); ?></h4>
 					<?php } ?>
 
-                    <h5 class="font-normal"><?php the_field( 'positions' ); ?></h5>
+                    <?php if ($args['category_name'] == 'trends' || $args['category_name'] == 'trends-affiliates') : ?>
+                        <p class="mt-0 font-light"><?php the_field( 'university' ); ?></p>
+                    <?php else: ?>
+                        <h5 class="font-normal"><?php the_field( 'positions' ); ?></h5>
+                    <?php endif; ?>
+
                     <p class="mt-0 font-light"><?php the_field( 'education' ); ?></p>
+
                     <p class="mt-2"><a href="mailto:<?php the_field( 'email' ); ?>"><?php the_field( 'email' ); ?></a>
                     </p>
                     <ul class="person-links mt-2">
