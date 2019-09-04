@@ -87,7 +87,7 @@
             "key": "field_5d5eae17dea87",
             "label": "Education",
             "name": "education",
-            "type": "textarea",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -98,9 +98,28 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br"
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5d6ffcf549eba",
+            "label": "University",
+            "name": "university",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5d5eae2adea88",
@@ -197,5 +216,5 @@
     ],
     "active": 1,
     "description": "Custom fields for MiCDA leadership and affiliates",
-    "modified": 1566584206
+    "modified": 1567620360
 }
