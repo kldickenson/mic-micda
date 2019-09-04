@@ -36,7 +36,7 @@ if ( $loop->have_posts() ):
                              alt="<?php the_title(); ?>">
 					<?php } else { ?>
                         <img class="person-photo pb-4 md:pb-0"
-                             src="http://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff"
+                             src="https://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff"
                              alt="">
 					<?php } ?>
                 </div>

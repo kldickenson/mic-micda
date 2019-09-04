@@ -20,7 +20,7 @@ if ( $loop->have_posts() ):
                                 alt="<?php  echo get_the_title($p->ID); ?>">
                         <?php } else { ?>
                             <img class="person-photo pb-2 md:pb-0"
-                                src="http://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff"
+                                src="https://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff"
                                 alt="">
                         <?php } ?>
                     <?php endforeach; ?>
