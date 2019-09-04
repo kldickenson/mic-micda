@@ -10,6 +10,10 @@
     max-width: none;
 }
 
+.wp-block-mc-blocks-section {
+    background-position: top !important;
+}
+
 .wp-block-mc-blocks-section.has-image .section-wrapper {
     align-items: center;
 }
@@ -105,6 +109,7 @@
 .wp-block-mc-blocks-section ul li {
     margin-bottom: 1rem;
 }
+
 
 @media (max-width: 768px) {
     .wp-block-mc-blocks-section .section-wrapper {
