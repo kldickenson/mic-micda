@@ -61,13 +61,13 @@ if ( $loop->have_posts() ):
                     </p>
                     <ul class="person-links mt-2">
 						<?php if ( get_field( 'web_page' ) ) { ?>
-                            <li><a href="<?php the_field( 'web_page' ); ?>">Web Page</a></li>
+                            <li><a target="_blank" href="<?php the_field( 'web_page' ); ?>">Web Page</a></li>
 						<?php } ?>
 						<?php if ( get_field( 'google_scholar' ) ) { ?>
-                            <li><a href="<?php the_field( 'google_scholar' ); ?>">Google Scholar</a></li>
+                            <li><a target="_blank" href="<?php the_field( 'google_scholar' ); ?>">Google Scholar</a></li>
 						<?php } ?>
 						<?php if ( get_field( 'pubmed' ) ) { ?>
-                            <li><a href="<?php the_field( 'pubmed' ); ?>">Pubmed</a></li>
+                            <li><a target="_blank" href="<?php the_field( 'pubmed' ); ?>">Pubmed</a></li>
 						<?php } ?>
                     </ul>
                     <span class="hidden last-name"><?php the_field( 'last_name' ); ?></span>
