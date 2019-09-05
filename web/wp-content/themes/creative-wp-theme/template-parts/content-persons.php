@@ -42,9 +42,8 @@ if ( $loop->have_posts() ):
                 </div>
                 <div class="person-text w-full md:w-3/4">
 
-					<?php if ( get_field( 'micda_title' ) ) { ?>
-                        <h4 class="text-lg font-bold text-umblue"><?php the_title(); ?>
-                            , <?php the_field( 'micda_title' ); ?></h4>
+					<?php if ( get_field( 'micda_title' ) && $args['category_name'] != 'trends' && $args['category_name']  != 'trends-affiliates' ) { ?>
+                        <h4 class="text-lg font-bold text-umblue"><?php the_title(); ?>, <?php the_field( 'micda_title' ); ?></h4>
 					<?php } else { ?>
                         <h4 class="text-lg font-bold text-umblue"><?php the_title(); ?></h4>
 					<?php } ?>
