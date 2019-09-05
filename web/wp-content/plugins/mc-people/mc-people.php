@@ -78,9 +78,9 @@ class PeoplePlugin {
                                              class="w-full h-64 lg:h-56 object-cover object-center mb-4"
                                              alt="<?php echo $post->post_title; ?>">
 
-                                        <p class="font-medium text-michigan-blue">
+                                        <a href="/micda-people#person-<?php echo $post->ID; ?>" class="block font-medium text-michigan-blue mb-2">
 											<?php echo $post->post_title; ?>
-                                        </p>
+                                        </a>
 
                                         <p class="text-sm">
 											<?php $positions = get_field( 'positions', $post->ID ); ?>
