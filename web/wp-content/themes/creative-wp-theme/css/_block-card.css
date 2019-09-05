@@ -4,11 +4,11 @@
 }
 
 .wp-block-mc-blocks-card.is-style-horizontal > div {
-    flex-basis: 66%;
+    flex-basis: 62%;
 }
 
 .wp-block-mc-blocks-card.is-style-horizontal > p {
-    flex-basis: 33%;
+    flex-basis: 38%;
 }
 
 @media all and (max-width: 640px) {
