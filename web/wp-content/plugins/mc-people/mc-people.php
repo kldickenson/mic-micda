@@ -72,32 +72,32 @@ class PeoplePlugin {
                     <div class="lg:w-7/12 -m-4 relative">
                         <div id="people-carousel" class="mx-8">
 							<?php foreach ( $posts as $post ) : setup_postdata( $post ) ?>
-                                <div class="person p-4">
-									<?php if ( get_field( 'photo', $post->ID ) ) : ?>
+								<?php if ( get_field( 'photo', $post->ID ) ) : ?>
+                                    <div class="person p-4">
                                         <img src="<?php echo get_field( 'photo', $post->ID ); ?>"
                                              class="w-full h-64 lg:h-56 object-cover object-center mb-4"
                                              alt="<?php echo $post->post_title; ?>">
-									<?php endif; ?>
 
-                                    <p class="font-medium text-michigan-blue">
-										<?php echo $post->post_title; ?>
-                                    </p>
+                                        <p class="font-medium text-michigan-blue">
+											<?php echo $post->post_title; ?>
+                                        </p>
 
-                                    <p class="text-sm">
-										<?php $positions = get_field( 'positions', $post->ID ); ?>
-										<?php echo current( explode( "\r", $positions ) ); ?>
-                                    </p>
-                                </div>
+                                        <p class="text-sm">
+											<?php $positions = get_field( 'positions', $post->ID ); ?>
+											<?php echo current( explode( "\r", $positions ) ); ?>
+                                        </p>
+                                    </div>
+								<?php endif; ?>
 							<?php endforeach; ?>
 
 							<?php wp_reset_postdata(); ?>
                         </div>
-                        <button class="absolute left-1 top-33" id="people-carousel-previous"
+                        <button class="absolute left-1 top-28" id="people-carousel-previous"
                                 aria-label="previous slides">
                             <img class="rotate-180" src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg"
                                  alt="">
                         </button>
-                        <button class="absolute right-1 top-33" id="people-carousel-next" aria-label="next slides">
+                        <button class="absolute right-1 top-28" id="people-carousel-next" aria-label="next slides">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" alt="">
                         </button>
                     </div>
