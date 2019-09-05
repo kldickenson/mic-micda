@@ -1,4 +1,6 @@
 <?php
+$theme_directory = get_template_directory_uri();
+
 $args = get_query_var( 'args' );
 
 $loop = new WP_Query( $args );
@@ -36,8 +38,8 @@ if ( $loop->have_posts() ):
                              alt="<?php the_title(); ?>">
 					<?php } else { ?>
                         <img class="person-photo pb-4 md:pb-0"
-                             src="https://fpoimg.com/250x270?text=FPO—Image to come&bg_color=ec008c&text_color=ffffff"
-                             alt="">
+                             src="<?php echo $theme_directory; ?>/img/user.svg"
+                             alt="<?php the_title(); ?>">
 					<?php } ?>
                 </div>
                 <div class="person-text w-full md:w-3/4">
