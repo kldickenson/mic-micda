@@ -34,33 +34,35 @@ while ( have_posts() ) {
             </div>
 
 
-            <div class="projects pb-4">
-               <?php
+            <div class="projects bg-pale-grey pt-12">
+				<?php
 
-                $post_type = 'projects';
-                $tax = 'years';
-                $tax_terms = get_terms( $tax, 'orderby=date&order=DESC');
-                if ($tax_terms) {
-                    foreach ($tax_terms as $tax_term) {
-                        $args = array(
-                            'post_type'         => $post_type,
-                            "$tax"              => $tax_term->slug,
-                            'post_status'       => 'publish',
-                            'posts_per_page'    => -1
-                        ); ?>
-                        <section class="projects container mx-auto pt-4 px-4">
-                            <h3 class="category text-2xl font-bold mb-8"><?php echo $tax_term->slug;?></h3>
-                            <ul>
-                                <?php
-                                set_query_var( 'args', $args );
-                                get_template_part( 'template-parts/content', 'projects' );
-                                ?>
-                            </ul>
+				$post_type = 'projects';
+				$tax       = 'years';
+				$tax_terms = get_terms( $tax, 'orderby=date&order=DESC' );
+				if ( $tax_terms ) {
+					foreach ( $tax_terms as $tax_term ) {
+						$args = array(
+							'post_type'      => $post_type,
+							"$tax"           => $tax_term->slug,
+							'post_status'    => 'publish',
+							'posts_per_page' => - 1
+						); ?>
+                        <section class="projects pt-4 px-4">
+                            <div class="max-w-5xl mx-auto">
+                                <h3 class="category text-2xl font-bold mb-8"><?php echo $tax_term->slug; ?></h3>
+                                <ul>
+									<?php
+									set_query_var( 'args', $args );
+									get_template_part( 'template-parts/content', 'projects' );
+									?>
+                                </ul>
+                            </div>
                         </section>
-                    <?php }
-                    }
-                wp_reset_query();
-                ?>
+					<?php }
+				}
+				wp_reset_query();
+				?>
                 <!-- End of year loop -->
             </div>
 
