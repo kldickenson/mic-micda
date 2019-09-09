@@ -21,7 +21,7 @@ while ( have_posts() ) {
 
     <div class="contained mt-2 mb-8">
 		<?php if ( function_exists( 'yoast_breadcrumb' ) ): ?>
-			<?php yoast_breadcrumb( '<p class="text-md font-medium" id="breadcrumbs">', '</p>' ); ?>
+			<?php yoast_breadcrumb( '<p class="text-md font-medium breadcrumbs" id="breadcrumbs">', '</p>' ); ?>
 		<?php endif; ?>
     </div>
 
