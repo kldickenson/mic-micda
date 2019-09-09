@@ -58,7 +58,7 @@ class PeoplePlugin {
                     <div class="lg:w-5/12 mb-12 lg:mb-0">
                         <h2 class="text-3xl text-michigan-blue"><a
                                     href="/micda-people"><?php echo __( 'People', 'creative-wp-theme' ) ?></a></h2>
-                        <p class="font-bold text-lg leading-tight"><?php echo $content; ?></p>
+                        <p class="font-bold text-lg leading-tight md:w-9/12"><?php echo $content; ?></p>
 
                         <a href="/micda-people" class="block mb-8 font-bold text-lg">
 							<?php echo __( 'See All Affiliates', 'creative-wp-theme' ); ?>
