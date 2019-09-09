@@ -28,7 +28,7 @@ while ( have_posts() ) {
     <main role="main" id="main" class="">
 
         <article>
-            <h1 class="container lg:mx-auto px-4 mb-12"><?php the_field( 'heading' ); ?></h1>
+            <h1 class="container lg:mx-auto px-4 mb-12 font-medium tracking-tight"><?php the_field( 'heading' ); ?></h1>
             <div class="container lg:mx-auto px-4">
 				<?php the_content(); ?>
             </div>

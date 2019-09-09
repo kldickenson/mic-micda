@@ -26,7 +26,7 @@ while ( have_posts() ) {
 			<?php endif; ?>
 
             <article class="mx-4 lg:mx-12 mb-20">
-                <h1 class="mb-12"><?php the_field( 'heading' ); ?></h1>
+                <h1 class="mb-12 font-medium tracking-tight"><?php the_field( 'heading' ); ?></h1>
                 <div class="content">
 					<?php the_content(); ?>
                 </div>

@@ -25,7 +25,7 @@ while ( have_posts() ) {
 		<?php get_sidebar(); ?>
 
         <article>
-            <h1 class="mb-12 leading-tight"><?php the_field( 'heading' ); ?></h1>
+            <h1 class="mb-12 leading-tight font-medium tracking-tight"><?php the_field( 'heading' ); ?></h1>
             <div class="content">
 				<?php the_content(); ?>
                 <?php get_template_part( 'content', 'page' ); ?>
