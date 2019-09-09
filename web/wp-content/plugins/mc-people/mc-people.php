@@ -53,10 +53,10 @@ class PeoplePlugin {
 		if ( $posts ) {
 			ob_start(); ?>
 
-            <section class="py-24">
+            <section class="py-16">
                 <div class="lg:flex justify-between">
                     <div class="lg:w-5/12 mb-12 lg:mb-0">
-                        <h2 class="text-4xl text-michigan-blue"><a
+                        <h2 class="text-3xl text-michigan-blue"><a
                                     href="/micda-people"><?php echo __( 'People', 'creative-wp-theme' ) ?></a></h2>
                         <p class="font-bold text-lg leading-tight"><?php echo $content; ?></p>
 
@@ -69,11 +69,11 @@ class PeoplePlugin {
                         </a>
                     </div>
 
-                    <div class="lg:w-7/12 -m-4 relative">
+                    <div class="lg:w-7/12 -mx-4 relative">
                         <div id="people-carousel" class="mx-8">
 							<?php foreach ( $posts as $post ) : setup_postdata( $post ) ?>
 								<?php if ( get_field( 'photo', $post->ID ) ) : ?>
-                                    <div class="person p-4">
+                                    <div class="person px-4">
                                         <img src="<?php echo get_field( 'photo', $post->ID ); ?>"
                                              class="w-full h-64 lg:h-56 object-cover object-center mb-4"
                                              alt="<?php echo $post->post_title; ?>">
@@ -82,7 +82,7 @@ class PeoplePlugin {
 											<?php echo $post->post_title; ?>
                                         </a>
 
-                                        <p class="text-sm">
+                                        <p class="text-sm mb-0">
 											<?php $positions = get_field( 'positions', $post->ID ); ?>
 											<?php echo current( explode( "\r", $positions ) ); ?>
                                         </p>
