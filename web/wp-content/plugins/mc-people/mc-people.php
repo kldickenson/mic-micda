@@ -75,7 +75,7 @@ class PeoplePlugin {
 								<?php if ( get_field( 'photo', $post->ID ) ) : ?>
                                     <div class="person px-4">
                                         <img src="<?php echo get_field( 'photo', $post->ID ); ?>"
-                                             class="w-full h-64 lg:h-56 object-cover object-center mb-4"
+                                             class="md:w-full mx-auto h-64 lg:h-56 object-cover object-center mb-4"
                                              alt="<?php echo $post->post_title; ?>">
 
                                         <a href="/micda-people#person-<?php echo $post->ID; ?>" class="block font-medium text-michigan-blue mb-2">

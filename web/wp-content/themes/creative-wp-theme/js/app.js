@@ -31,8 +31,8 @@ if (peopleCarousel) {
         loop: true
     });
 
-    document.getElementById("people-carousel-previous").addEventListener("click", () => carousel.prev(3));
-    document.getElementById("people-carousel-next").addEventListener("click", () => carousel.next(3));
+    document.getElementById("people-carousel-previous").addEventListener("click", () => carousel.prev(carousel.perPage));
+    document.getElementById("people-carousel-next").addEventListener("click", () => carousel.next(carousel.perPage));
 }
 
 // Mobile menu.
