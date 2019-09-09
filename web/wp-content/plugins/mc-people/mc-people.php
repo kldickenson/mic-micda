@@ -65,7 +65,7 @@ class PeoplePlugin {
                         </a>
 
                         <a href="/micda-people/become-an-affiliate/" class="button inline-block">
-							<?php echo __( 'Apply to become an affiliate', 'creative-wp-theme' ); ?>
+							<?php echo __( 'Apply to become a MiCDA affiliate', 'creative-wp-theme' ); ?>
                         </a>
                     </div>
 
