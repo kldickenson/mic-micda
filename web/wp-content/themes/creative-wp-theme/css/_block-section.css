@@ -1,8 +1,8 @@
 /* purgecss start ignore */
 .wp-block-mc-blocks-section {
+    background-position: top !important;
     color: #fff;
-    padding-bottom: 4rem;
-    padding-top: 4rem;
+    min-height: 450px;
 }
 
 .wp-block-mc-blocks-section.has-image {
@@ -10,8 +10,8 @@
     max-width: none;
 }
 
-.wp-block-mc-blocks-section {
-    background-position: top !important;
+.wp-block-mc-blocks-section .section-wrapper {
+    min-height: inherit;
 }
 
 .wp-block-mc-blocks-section.has-image .section-wrapper {
@@ -86,7 +86,7 @@
     justify-content: normal;
 }
 
-.wp-block-mc-blocks-section.has-image .section-text {
+.wp-block-mc-blocks-section .section-text {
     align-self: center;
     padding-bottom: 2rem;
     padding-top: 2rem;
@@ -114,6 +114,12 @@
 
 
 @media (max-width: 768px) {
+    .wp-block-mc-blocks-section {
+        min-height: auto;
+        padding-bottom: 4rem;
+        padding-top: 4rem;
+    }
+
     .wp-block-mc-blocks-section .section-wrapper {
         display: block;
     }

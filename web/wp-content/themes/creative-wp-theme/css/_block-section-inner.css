@@ -1,4 +1,8 @@
 /* purgecss start ignore */
+.wp-block-mc-blocks-section-inner {
+    min-height: 450px;
+}
+
 .wp-block-mc-blocks-section-inner .wp-block-mc-blocks-card {
     flex-basis: 30%;
     flex-grow: 1;
