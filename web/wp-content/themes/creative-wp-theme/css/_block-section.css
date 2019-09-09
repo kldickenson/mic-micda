@@ -15,11 +15,12 @@
 }
 
 .wp-block-mc-blocks-section.has-image .section-wrapper {
-    align-items: center;
+    align-items: stretch;
 }
 
 .wp-block-mc-blocks-section.has-image .section-image {
     margin-right: 3rem;
+    object-fit: cover;
 }
 
 .wp-block-mc-blocks-section.has-image.section-left .section-wrapper {
@@ -86,6 +87,7 @@
 }
 
 .wp-block-mc-blocks-section.has-image .section-text {
+    align-self: center;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
