@@ -88,8 +88,7 @@
 
 .wp-block-mc-blocks-section .section-text {
     align-self: center;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    padding: 2rem 1rem;
 }
 
 .wp-block-mc-blocks-section .section-text .button {
