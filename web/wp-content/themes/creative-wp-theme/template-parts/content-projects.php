@@ -12,7 +12,7 @@ if ( $loop->have_posts() ):
 		<?php $leads = get_field( 'lead' ); ?>
 
         <li class="pb-16">
-            <div class="project flex">
+            <div class="project md:flex">
                 <div class="person-photo w-full md:w-1/4 md:mr-8">
                     <!-- Relationship - Leader for photo -->
 					<?php if ( $leads ): ?>
@@ -58,16 +58,21 @@ if ( $loop->have_posts() ):
 						<?php echo get_the_content( $post->ID ); ?>
                     </div>
                     <!-- Outcomes repeat field-->
-                    <div class="outcomes mt-8 clearfix">
-						<?php if ( have_rows( 'outcomes' ) ): ?>
-                            <h4 class="font-semibold"><?php echo __( 'Outcomes', 'creative-wp-theme' ); ?></h4>
-                            <ul>
+					<?php if ( have_rows( 'outcomes' ) ): ?>
+                        <details class="outcomes mt-8 clearfix">
+                            <summary class="font-semibold">
+								<?php echo __( 'Outcomes', 'creative-wp-theme' ); ?>
+                                <span class="plus-wrapper">
+                                    <span class="plus"></span>
+                                </span>
+                            </summary>
+                            <ul class="accordion-content">
 								<?php while ( have_rows( 'outcomes' ) ): the_row(); ?>
                                     <li class="mb-4"><?php the_sub_field( 'bibliography' ); ?></li>
 								<?php endwhile; ?>
                             </ul>
-						<?php endif; ?>
-                    </div>
+                        </details>
+					<?php endif; ?>
                 </div>
             </div>
         </li>
