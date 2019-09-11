@@ -10,7 +10,7 @@ while ( have_posts() ) {
         <div class="lg:w-7/12">
 			<?php if ( has_post_thumbnail() ): ?>
                 <div class="relative">
-					<?php echo get_the_post_thumbnail( $post->ID, 'full', array( 'class' => 'w-full max-h-20 object-cover object-top' ) ); ?>
+					<?php echo get_the_post_thumbnail( $post->ID, 'full', array( 'class' => 'w-full h-64 md:h-72 object-cover object-top' ) ); ?>
                     <div class="absolute w-full bottom-2">
                         <div class="ml-4 lg:ml-12">
                             <div class="bg-michigan-maize md:text-2xl xl:text-3xl font-bold inline py-2 px-4 leading-none uppercase"><?php the_title(); ?></div>

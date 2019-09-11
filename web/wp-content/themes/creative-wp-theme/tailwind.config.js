@@ -18,8 +18,8 @@ module.exports = {
             }
         },
         extend: {
-            spacing: {
-
+            height: {
+                "72": "20rem"
             },
             inset: {
                 "-1": "-1rem",
