@@ -19,8 +19,15 @@
     padding-right: 1rem;
 }
 
+.wp-block-button {
+    color: #024794;
+}
+
+.wp-block-button__link,
 .button {
+    background-color: transparent;
     border: 1px solid #024794;
+    border-radius: 0;
     color: #024794;
     display: inline-block;
     font-size: 1rem;
@@ -30,6 +37,8 @@
     transition: background-color 0.15s ease;
 }
 
+.wp-block-button__link:hover,
+.wp-block-button__link:focus,
 .button:hover,
 .button:focus {
     background-color: #EDEBEB;
@@ -54,8 +63,10 @@
 }
 
 @media all and (min-width: 768px) {
+    .wp-block-button__link,
     .button {
         font-size: 1.125rem;
     }
 }
+
 /* purgecss end ignore */
