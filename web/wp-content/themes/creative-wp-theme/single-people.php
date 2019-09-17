@@ -18,9 +18,9 @@ while ( have_posts() ) {
     <main role="main" id="main" class="contained">
 		<?php get_sidebar(); ?>
 
-        <article class="mt-20">
-            <div class="flex">
-                <img class="w-216 h-270 object-cover mr-8" src="<?php the_field( 'photo' ); ?>"
+        <article class="my-20">
+            <div class="md:flex">
+                <img class="w-216 h-270 object-cover mr-8 mb-8" src="<?php the_field( 'photo' ); ?>"
                      alt="<?php the_title(); ?>"/>
 
                 <div>
