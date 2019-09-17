@@ -5,13 +5,16 @@ const personFilter = (category) => {
     const persons = affiliates.getElementsByClassName("person");
 
     for (var i = 0; i < persons.length; i++) {
-
-        const personCat = persons[i].getElementsByClassName("category");
-
-        if (personCat[0].innerHTML !== category) {
-            persons[i].parentElement.classList.add("hide");
-        } else {
+        if (category === "all") {
             persons[i].parentElement.classList.remove("hide");
+        } else {
+            const personCat = persons[i].getElementsByClassName("category");
+
+            if (personCat[0].innerHTML !== category) {
+                persons[i].parentElement.classList.add("hide");
+            } else {
+                persons[i].parentElement.classList.remove("hide");
+            }
         }
     }
 };
@@ -63,6 +66,6 @@ const toggleMenu = (event) => {
         body.classList.add("overflow-hidden", "h-screen");
     } else {
         menuToggle.setAttribute("aria-expanded", false);
-		body.classList.remove("overflow-hidden", "h-screen");
-	}
+        body.classList.remove("overflow-hidden", "h-screen");
+    }
 };

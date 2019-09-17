@@ -39,7 +39,7 @@ while ( have_posts() ) {
 						<?php
 						$leadership = array(
 							'post_type'      => 'people',
-							'category_name' => 'leadership',
+							'legacy_name'    => 'leadership',
 							'orderby'        => 'menu_order',
 							'order'          => 'ASC',
 							'posts_per_page' => - 1,
@@ -71,13 +71,14 @@ while ( have_posts() ) {
                             <li><a class="text-lg" href="#k_o" onClick="personFilter('K-O')">K-O</a></li>
                             <li><a class="text-lg" href="#p_t" onClick="personFilter('P-T')">P-T</a></li>
                             <li><a href="#u_z" onClick="personFilter('U-Z')">U-Z</a></li>
+                            <li><a href="#all" onClick="personFilter('all')">ALL</a></li>
                         </ul>
                     </div>
                     <ul>
 						<?php
 						$affiliates = array(
 							'post_type'      => 'people',
-							'category_name'  => 'affiliates',
+							'legacy_name'    => 'affiliates',
 							'orderby'        => 'meta_value',
 							'meta_key'       => 'last_name',
 							'order'          => 'ASC',

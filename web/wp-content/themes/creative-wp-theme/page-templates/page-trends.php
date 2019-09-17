@@ -34,12 +34,12 @@ while ( have_posts() ) {
             </div>
             <div class="leadership pb-4">
                 <section id="leadership" class="mx-auto pt-16 max-w-5xl px-4">
-                    <h3 class="text-xl font-bold mb-8"><?php echo __('Organizers', 'creative-wp-theme'); ?></h3>
+                    <h3 class="text-xl font-bold mb-8"><?php echo __( 'Organizers', 'creative-wp-theme' ); ?></h3>
                     <ul>
 						<?php
 						$trends = array(
 							'post_type'      => 'people',
-							'category_name'  => 'trends',
+							'legacy_name'    => 'trends',
 							'orderby'        => 'menu_order',
 							'order'          => 'ASC',
 							'posts_per_page' => - 1,
@@ -71,13 +71,14 @@ while ( have_posts() ) {
                             <li><a class="text-lg" href="#k_o" onClick="personFilter('K-O')">K-O</a></li>
                             <li><a class="text-lg" href="#p_t" onClick="personFilter('P-T')">P-T</a></li>
                             <li><a href="#u_z" onClick="personFilter('U-Z')">U-Z</a></li>
+                            <li><a href="#all" onClick="personFilter('all')">ALL</a></li>
                         </ul>
                     </div>
                     <ul>
 						<?php
 						$trends_affiliates = array(
 							'post_type'      => 'people',
-							'category_name'  => 'trends-affiliates',
+							'legacy_name'    => 'trends-affiliates',
 							'orderby'        => 'meta_value',
 							'meta_key'       => 'last_name',
 							'order'          => 'ASC',

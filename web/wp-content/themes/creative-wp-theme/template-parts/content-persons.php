@@ -44,7 +44,7 @@ if ( $loop->have_posts() ):
                 </div>
                 <div class="person-text w-full md:w-3/4">
 
-					<?php if ( get_field( 'micda_title' ) && $args['category_name'] != 'trends' && $args['category_name'] != 'trends-affiliates' ) { ?>
+					<?php if ( get_field( 'micda_title' ) && $args['legacy_name'] != 'trends' && $args['legacy_name'] != 'trends-affiliates' ) { ?>
                         <h4 id="person-<?php echo $post->ID; ?>"
                             class="text-lg font-bold text-umblue"><?php the_title(); ?>
                             , <?php the_field( 'micda_title' ); ?></h4>
@@ -53,7 +53,7 @@ if ( $loop->have_posts() ):
                             class="text-lg font-bold text-umblue"><?php the_title(); ?></h4>
 					<?php } ?>
 
-					<?php if ( $args['category_name'] == 'trends' || $args['category_name'] == 'trends-affiliates' ) : ?>
+					<?php if ( $args['legacy_name'] == 'trends' || $args['legacy_name'] == 'trends-affiliates' ) : ?>
                         <p class="mt-0 font-light"><?php the_field( 'university' ); ?></p>
 					<?php else: ?>
                         <h5 class="font-normal"><?php the_field( 'positions' ); ?></h5>
