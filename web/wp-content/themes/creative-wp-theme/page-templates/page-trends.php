@@ -43,6 +43,13 @@ while ( have_posts() ) {
 							'orderby'        => 'menu_order',
 							'order'          => 'ASC',
 							'posts_per_page' => - 1,
+							'tax_query'      => array(
+								array(
+									'taxonomy' => 'roles',
+									'field'    => 'slug',
+									'terms'    => array( 'trends' ),
+								)
+							)
 						);
 						?>
 						<?php
@@ -75,6 +82,13 @@ while ( have_posts() ) {
 							'meta_key'       => 'last_name',
 							'order'          => 'ASC',
 							'posts_per_page' => - 1,
+							'tax_query'      => array(
+								array(
+									'taxonomy' => 'roles',
+									'field'    => 'slug',
+									'terms'    => array( 'trends-affiliates' ),
+								)
+							)
 						);
 						?>
 						<?php

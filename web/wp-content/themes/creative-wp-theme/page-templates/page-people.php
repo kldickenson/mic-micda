@@ -34,15 +34,22 @@ while ( have_posts() ) {
             </div>
             <div class="leadership pb-4">
                 <section id="leadership" class="mx-auto pt-16 max-w-5xl px-4">
-                    <h3 class="text-xl font-bold mb-8"><?php echo __('Leadership', 'creative-wp-theme'); ?></h3>
+                    <h3 class="text-xl font-bold mb-8"><?php echo __( 'Leadership', 'creative-wp-theme' ); ?></h3>
                     <ul>
 						<?php
 						$leadership = array(
 							'post_type'      => 'people',
-							'category_name'  => 'leadership',
+							'category_name' => 'leadership',
 							'orderby'        => 'menu_order',
 							'order'          => 'ASC',
 							'posts_per_page' => - 1,
+							'tax_query'      => array(
+								array(
+									'taxonomy' => 'roles',
+									'field'    => 'slug',
+									'terms'    => array( 'leadership' ),
+								)
+							)
 						);
 						?>
 						<?php
@@ -75,6 +82,13 @@ while ( have_posts() ) {
 							'meta_key'       => 'last_name',
 							'order'          => 'ASC',
 							'posts_per_page' => - 1,
+							'tax_query'      => array(
+								array(
+									'taxonomy' => 'roles',
+									'field'    => 'slug',
+									'terms'    => array( 'affiliates' ),
+								)
+							)
 						);
 						?>
 						<?php
@@ -88,4 +102,3 @@ while ( have_posts() ) {
     </main>
 <?php } ?>
 <?php get_footer(); ?>
-
