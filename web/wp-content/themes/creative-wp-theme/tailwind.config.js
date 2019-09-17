@@ -19,6 +19,7 @@ module.exports = {
         },
         extend: {
             height: {
+                "270": "270px",
                 "72": "20rem"
             },
             inset: {
@@ -31,8 +32,8 @@ module.exports = {
                 "33": "33%"
             },
             minHeight: {
-              "16": "16rem",
-              "65": "65vh"
+                "16": "16rem",
+                "65": "65vh"
             },
             maxHeight: {
                 "20": "20rem",
@@ -41,6 +42,9 @@ module.exports = {
             },
             maxWidth: {
                 "15": "15rem"
+            },
+            width: {
+                "216": "216px"
             }
         }
     },
